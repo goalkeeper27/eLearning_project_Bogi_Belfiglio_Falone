@@ -65,45 +65,50 @@
         <div class="container text-center my-5 py-5">
             <h1 class="text-white mt-4 mb-4">Non hai ancora un account? Registrati</h1>
             
-                <div class="contenitore_login">
+                <div class="contenitore_reg">
+                    <h2 class="text-blue mb-4 mt-4">Compila inserendo i tuoi dati</h1>
                     <form method="post" action="">
                         <div class="form_login">
-                            <label>Nome:</label>
+                            <label class="mr-2">Nome:</label>
+                            <input type="text" name="nome" placeholder="Inserisci il tuo nome" required />
+                        </div>
+                        <div class="form_login">
+                            <label class="mr-2">Cognome:</label>
+                            <input type="text" name="cognome" placeholder="Inserisci il tuo cognome" required />
+                        </div>
+                        <div class="form_login">
+                            <label class="mr-2">Data di nascita:</label>
+                            <input type="text" name="data" placeholder="Inserisci la tua data di nascita" required />
+                        </div>
+                        <div class="form_login">
+                            <label class="mr-2">Città:</label>
+                            <input type="text" name="citta" placeholder="Inserisci la tua città di nascita" required />
+                        </div>
+                        <div class="form_login">
+                            <label class="mr-2">Codice fiscale:</label>
+                            <input type="text" name="codice_fiscale" placeholder="Inserisci il tuo codice fiscale" required />
+                        </div>
+                        <div class="form_login">
+                            <label class="mr-2">Username:</label>
                             <input type="text" name="username" placeholder="Inserisci il tuo username" required />
                         </div>
                         <div class="form_login">
-                            <label>Cognome:</label>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username" required />
+                            <label class="mr-2">Email:</label>
+                            <input type="text" name="email" placeholder="Inserisci la tua email" required />
                         </div>
                         <div class="form_login">
-                            <label>Città:</label>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username" required />
+                            <label class="mr-2">Password:</label>
+                            <input type="password" name="password" placeholder="Inserisci la password" required />
                         </div>
                         <div class="form_login">
-                            <label>Codice fiscale:</label>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username" required />
-                        </div>
-                        <div class="form_login">
-                            <label>Username:</label>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username" required />
-                        </div>
-                        <div class="form_login">
-                            <label>Email:</label>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username" required />
-                        </div>
-                        <div class="form_login">
-                            <label>Password:</label>
-                            <input type="password" name="password" placeholder="Inserisci la tua password" required />
-                        </div>
-                        <div class="form_login">
-                            <label>Ripeti Password:</label>
-                            <input type="password" name="password" placeholder="Inserisci la tua password" required />
+                            <label class="mr-2">Ripeti Password:</label>
+                            <input type="password" name="password_ripetuta" placeholder="Inserisci nuovamente la password" required />
                         </div>
                         <div class="form_login">
                             <button type="submit" name="login" value="1">Accedi</button>
                         </div>
                         
-                        <a href="index.html" style="margin-right: 10%;">torna alla homepage</a>
+                        <a href="index.html">torna alla homepage</a>
                     </form> 
                 </div>
             
