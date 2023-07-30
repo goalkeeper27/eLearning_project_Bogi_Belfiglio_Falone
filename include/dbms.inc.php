@@ -16,15 +16,20 @@
     $config['sql.example.com']['passwd'] = "viva1felice";
     $config['sql.example.com']['db_name'] = "tdw_2223";
 */
-    $mysql = new mysqli(
-        $config[/*$_SERVER["SERVER_NAME"]*/ 'localhost']['host'],
-        $config[/*$_SERVER["SERVER_NAME"]*/ 'localhost']['user'],
-        $config[/*$_SERVER["SERVER_NAME"]*/ 'localhost']['passwd'],
-        $config[/*$_SERVER["SERVER_NAME"]*/ 'localhost']['db_name']
+if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
+    die(phpinfo());
+} else {
+    echo 'Day is saved!';
+}
+    /*$mysql = new mysqli(
+        $config['localhost']['host'],
+        $config['localhost']['user'],
+        $config['localhost']['passwd'],
+        $config['localhost']['db_name']
     );
 
     if (!$mysql) {
-        die('conection error');
-    }
+        die('connection error');
+    }*/
 
 ?>
