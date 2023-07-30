@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Lug 29, 2023 alle 17:50
--- Versione del server: 10.4.25-MariaDB
--- Versione PHP: 8.1.10
+-- Creato il: Lug 30, 2023 alle 18:32
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `attestato` (
   `ID_iscrizione` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `file` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `audio` (
   `ID_materiale` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `file` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,14 @@ CREATE TABLE `categoria` (
   `ID_responsabile` int(11) UNSIGNED NOT NULL,
   `nome` varchar(20) NOT NULL,
   `descrizione` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `categoria`
+--
+
+INSERT INTO `categoria` (`ID`, `ID_responsabile`, `nome`, `descrizione`) VALUES
+(1, 1, 'CATEGORIA 1', 'DJLVNDFLòNFDVLòNVLòKVNFDJL DFKJD KJDKF FSJK SK DJKNSLMS F LMF VSKNKJCC');
 
 -- --------------------------------------------------------
 
@@ -74,7 +81,15 @@ CREATE TABLE `corso` (
   `prezzo` float NOT NULL,
   `data_inizio` date NOT NULL,
   `data_fine` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `corso`
+--
+
+INSERT INTO `corso` (`ID`, `ID_istruttore`, `ID_categoria`, `nome`, `prezzo`, `data_inizio`, `data_fine`) VALUES
+(4, 1, 1, 'PROVA CORSO 1', 170, '2023-08-01', '2023-11-01'),
+(5, 1, 1, 'PROVA CORSO 2', 200, '2023-08-06', '2023-09-26');
 
 -- --------------------------------------------------------
 
@@ -86,7 +101,7 @@ CREATE TABLE `domanda` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_esercitazione` int(11) UNSIGNED NOT NULL,
   `corpo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -99,7 +114,7 @@ CREATE TABLE `esercitazione` (
   `ID_corso` int(11) UNSIGNED NOT NULL,
   `numero` int(11) NOT NULL,
   `punteggio_totale` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -111,7 +126,7 @@ CREATE TABLE `immagine` (
   `ID` int(10) UNSIGNED NOT NULL,
   `titolo` varchar(30) NOT NULL,
   `file` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -125,7 +140,14 @@ CREATE TABLE `istruttore` (
   `cognome` varchar(20) NOT NULL,
   `data` date NOT NULL,
   `citta` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `istruttore`
+--
+
+INSERT INTO `istruttore` (`ID`, `nome`, `cognome`, `data`, `citta`) VALUES
+(1, 'antonio', 'verdi', '1972-02-02', 'NUORO');
 
 -- --------------------------------------------------------
 
@@ -138,7 +160,7 @@ CREATE TABLE `lezione` (
   `numero` int(11) NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `descrizione` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -150,7 +172,7 @@ CREATE TABLE `materiale` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_lezione` int(11) UNSIGNED NOT NULL,
   `ID_corso` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -165,7 +187,7 @@ CREATE TABLE `notifica` (
   `ora` time NOT NULL,
   `oggetto` text NOT NULL,
   `corpo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -179,7 +201,7 @@ CREATE TABLE `recensione` (
   `data` date NOT NULL,
   `ora` time NOT NULL,
   `corpo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -192,7 +214,14 @@ CREATE TABLE `responsabile` (
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `responsabile`
+--
+
+INSERT INTO `responsabile` (`ID`, `nome`, `cognome`, `email`) VALUES
+(1, 'MARIO', 'ROSSI', 'mario.rossi@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -205,7 +234,7 @@ CREATE TABLE `risposta` (
   `ID_domanda` int(11) UNSIGNED NOT NULL,
   `corpo` int(11) NOT NULL,
   `stato` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -219,7 +248,7 @@ CREATE TABLE `storico_esercitazioni_corso` (
   `ID_esercitazione` int(11) UNSIGNED NOT NULL,
   `data` date NOT NULL,
   `punteggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -232,7 +261,7 @@ CREATE TABLE `storico_iscrizioni_corso` (
   `ID_utente` int(10) UNSIGNED NOT NULL,
   `ID_corso` int(11) UNSIGNED NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -245,7 +274,7 @@ CREATE TABLE `storico_lezioni_corso` (
   `ID_lezione` int(11) UNSIGNED NOT NULL,
   `ID_iscrizione` int(11) UNSIGNED NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -263,7 +292,7 @@ CREATE TABLE `utente` (
   `username` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -276,7 +305,7 @@ CREATE TABLE `video` (
   `ID_materiale` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `file` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indici per le tabelle scaricate
@@ -435,13 +464,13 @@ ALTER TABLE `audio`
 -- AUTO_INCREMENT per la tabella `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `corso`
 --
 ALTER TABLE `corso`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `domanda`
@@ -465,7 +494,7 @@ ALTER TABLE `immagine`
 -- AUTO_INCREMENT per la tabella `istruttore`
 --
 ALTER TABLE `istruttore`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `lezione`
@@ -495,7 +524,7 @@ ALTER TABLE `recensione`
 -- AUTO_INCREMENT per la tabella `responsabile`
 --
 ALTER TABLE `responsabile`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `risposta`
