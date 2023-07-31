@@ -14,20 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $password_ripetuta = $_POST["password_ripetuta"];
 
+    $dateTime = new DateTime($data);
+    $dataString = $dateTime->format('Y-m-d');
 
-    if ($password !== $password_ripetuta) {
-        echo "Errore: La password e la password ripetuta non coincidono";
+    $password_hash = hash('md5', $password);
+
+    $sql = "INSERT INTO `utente` (`nome`, `cognome`, `data`, `citta`, `codice_fiscale`, `username`, `email`, `password`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $mysql->prepare($sql);
+
+    $stmt->bind_param("ssssssss", $nome, $cognome, $dataString, $citta, $codice_fiscale, $username, $email, $password_hash);
+
+    if ($stmt->execute()) {
+        header("Location: index.php");
         exit;
+    } else {
+        echo "<p>errore durante la registrazione</p>";
     }
 
-    $sql = "INSERT INTO utenti (nome, cognome, data, citta, codice_fiscale, username, email, password) 
-        VALUES ('$nome', '$cognome', '$data', '$citta', '$codice_fiscale', '$username', '$email', '$password')";
-
-    if($mysql ->query($sql) == TRUE){
-        echo "Registrazione avvenuta con successo";
-    }else{
-        echo "Errore durante la registrazione: ";
-    }
+    $stmt->close();
 
 }
 ?>

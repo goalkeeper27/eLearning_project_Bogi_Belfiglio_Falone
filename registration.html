@@ -67,7 +67,7 @@
             
                 <div class="contenitore_reg">
                     <h2 class="text-blue mb-4 mt-4">Compila inserendo i tuoi dati</h1>
-                    <form method="post" action="">
+                    <form method="post" action="registration.php">
                         <div class="form_login">
                             <label class="mr-2">Nome:</label>
                             <input type="text" name="nome" placeholder="Inserisci il tuo nome" required />
@@ -78,7 +78,7 @@
                         </div>
                         <div class="form_login">
                             <label class="mr-2">Data di nascita:</label>
-                            <input type="text" name="data" placeholder="Inserisci la tua data di nascita" required />
+                            <input type="date" name="data" placeholder="Inserisci la tua data di nascita" required />
                         </div>
                         <div class="form_login">
                             <label class="mr-2">Città:</label>
@@ -98,22 +98,24 @@
                         </div>
                         <div class="form_login">
                             <label class="mr-2">Password:</label>
-                            <input type="password" name="password" placeholder="Inserisci la password" required />
+                            <input type="password" name="password" id="password" placeholder="Inserisci la password" required />
                         </div>
                         <div class="form_login">
                             <label class="mr-2">Ripeti Password:</label>
-                            <input type="password" name="password_ripetuta" placeholder="Inserisci nuovamente la password" required />
+                            <input type="password" name="password_ripetuta" id="password_ripetuta" placeholder="Inserisci nuovamente la password" onchange="psw_control()" required />
                         </div>
+                        <p id="message_error" style="color:red;"></p>
                         <div class="form_login">
-                            <button type="submit" name="login" value="1">Accedi</button>
+                            <button type="submit" name="login" id="registrati">Registrati</button>
                         </div>
                         
-                        <a href="index.html">torna alla homepage</a>
+                        <a href="index.php">torna alla homepage</a>
                     </form> 
                 </div>
             
         </div>
     </div>
+    <script src="js/registration.js"></script>
 </body>
 
 </html>
