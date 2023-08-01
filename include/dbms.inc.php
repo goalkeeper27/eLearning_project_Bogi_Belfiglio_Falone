@@ -19,7 +19,7 @@
     $mysql = new mysqli(
         $config['localhost']['host'],
         $config['localhost']['user'],
-        "",
+        $config['localhost']['passwd'],
         $config['localhost']['db_name']
     );
 
