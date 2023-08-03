@@ -21,14 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             $data = $result->fetch_assoc();
-            $_SESSION['auth']['user'] = $data;
+            $_SESSION['auth']['username'] = $data['username'];
+            $_SESSION['auth']['password'] = $data['password'];
             header("Location: index.php");
             exit;
         } else {
-            /*
-            $web_user = get_current_user();
-            $web_user = session_save_path();
-            echo "Nome utente del server web: " . $web_user; */
             echo "Nome utente e/o password non validi";
         }
     } else {

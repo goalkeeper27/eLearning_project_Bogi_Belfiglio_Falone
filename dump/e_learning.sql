@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 02, 2023 alle 01:28
+-- Creato il: Ago 03, 2023 alle 13:20
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -42,7 +42,7 @@ CREATE TABLE `attestato` (
 
 CREATE TABLE `audio` (
   `ID` int(10) UNSIGNED NOT NULL,
-  `ID_materiale` int(11) UNSIGNED NOT NULL,
+  `ID_lezione` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `file` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -82,6 +82,7 @@ CREATE TABLE `corso` (
   `ID_categoria` int(11) UNSIGNED NOT NULL,
   `ID_immagine` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
+  `lingua` varchar(20) NOT NULL,
   `prezzo` float NOT NULL,
   `descrizione` text NOT NULL,
   `data_inserimento` datetime DEFAULT NULL
@@ -91,13 +92,13 @@ CREATE TABLE `corso` (
 -- Dump dei dati per la tabella `corso`
 --
 
-INSERT INTO `corso` (`ID`, `ID_istruttore`, `ID_categoria`, `ID_immagine`, `nome`, `prezzo`, `descrizione`, `data_inserimento`) VALUES
-(6, 1, 1, 3, 'FUNDAMENTALS OF PYTHON PROGRAMMING', 250, 'Discover the core concepts of Python programming with our comprehensive E-Learning course. Perfect for beginners and those new to coding, this course covers essential topics such as variables, data types, control structures, and functions in Python. Through interactive lessons and hands-on exercises, you\'ll develop a solid foundation in Python syntax and programming logic. Explore the world of Python and unlock the potential for creating practical applications and solving real-world problems. Get started on your coding journey today with the Fundamentals of Python Programming course!', '2023-08-01 16:01:00'),
-(8, 2, 3, 4, 'GRAPHIC DESIGN FUNDAMENTALS', 120, 'Our \"Graphic Design Fundamentals\" course is a comprehensive e-learning experience that introduces you to the core concepts of graphic design. Through interactive lessons and hands-on projects, you\'ll learn the principles of layout, color theory, typography, and composition. Explore popular design software and unleash your creativity while creating engaging designs for various mediums. Perfect for beginners and enthusiasts alike, this course is your gateway to mastering the art of graphic design and unlocking your creative potential. Join us on this inspiring journey into the world of visual communication!', '2023-08-01 16:06:34'),
-(9, 3, 4, 5, 'INTRODUCTION TO DIGITAL MARKETING', 300, 'Our \"Introduction to Digital Marketing\" course is designed to provide a comprehensive overview of the key concepts and tools used in digital marketing. Participants will learn the fundamentals of various digital marketing channels, including email marketing, content marketing, and paid advertising. Through interactive lessons and practical exercises, students will gain insights into audience targeting, campaign analysis, and creating effective digital marketing strategies. Whether you are new to the digital marketing field or looking to enhance your skills, this course offers a solid foundation for navigating the dynamic world of online marketing. Join us to unlock the potential of digital marketing and propel your brand to new heights in the digital realm.', '2023-08-01 16:23:57'),
-(10, 4, 5, 6, 'PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS', 175, '\"Photography Essentials: Mastering the Art of Capturing Moments\" is a comprehensive e-learning experience crafted to hone your photography skills from the ground up. This course covers the fundamental principles of photography, such as understanding exposure, composition, and lighting. Through practical exercises and insightful lessons, participants will learn to create compelling visual narratives and enhance their creativity behind the lens. From mastering camera settings to post-processing techniques, this course equips you with the expertise to transform ordinary scenes into extraordinary works of art. Unleash your inner photographer and express yourself through the lens in this captivating journey of artistic exploration. Join us and learn how to immortalize the beauty of life one shot at a time.', '2023-08-01 16:35:58'),
-(11, 5, 1, 7, 'FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH', 130, '\"Full-Stack Web Development: Building Dynamic Websites from Scratch\" is a comprehensive e-learning journey designed to equip you with the skills to create fully functional web applications. This course covers the entire development stack, from front-end technologies like HTML, CSS, and JavaScript, to back-end frameworks like Node.js and Express.js. Through hands-on projects and real-world scenarios, participants will gain a deep understanding of web development architecture and learn to design responsive and interactive websites. Explore the intricacies of databases, authentication, and deployment, as you embark on the path to becoming a proficient full-stack developer. Join us on this immersive experience and bring your creative ideas to life in the digital realm with cutting-edge web applications.', '2023-08-01 16:47:34'),
-(12, 6, 4, 14, 'MASTERING DIGITAL MARKETING STRATEGIES', 350, 'Unlock the power of digital marketing with our comprehensive eLearning course led by John Smith, a seasoned digital marketing strategist. From SEO and social media to email marketing and analytics, this course equips you with essential skills to create effective digital marketing campaigns. Gain insights into the latest trends and best practices, and watch your online presence soar to new heights under the guidance of our expert instructor.', '2023-08-02 00:18:58');
+INSERT INTO `corso` (`ID`, `ID_istruttore`, `ID_categoria`, `ID_immagine`, `nome`, `lingua`, `prezzo`, `descrizione`, `data_inserimento`) VALUES
+(6, 1, 1, 3, 'FUNDAMENTALS OF PYTHON PROGRAMMING', 'ENGLISH', 250, 'Discover the core concepts of Python programming with our comprehensive E-Learning course. Perfect for beginners and those new to coding, this course covers essential topics such as variables, data types, control structures, and functions in Python. Through interactive lessons and hands-on exercises, you\'ll develop a solid foundation in Python syntax and programming logic. Explore the world of Python and unlock the potential for creating practical applications and solving real-world problems. Get started on your coding journey today with the Fundamentals of Python Programming course!', '2023-08-01 16:01:00'),
+(8, 2, 3, 4, 'GRAPHIC DESIGN FUNDAMENTALS', 'ENGLISH', 120, 'Our \"Graphic Design Fundamentals\" course is a comprehensive e-learning experience that introduces you to the core concepts of graphic design. Through interactive lessons and hands-on projects, you\'ll learn the principles of layout, color theory, typography, and composition. Explore popular design software and unleash your creativity while creating engaging designs for various mediums. Perfect for beginners and enthusiasts alike, this course is your gateway to mastering the art of graphic design and unlocking your creative potential. Join us on this inspiring journey into the world of visual communication!', '2023-08-01 16:06:34'),
+(9, 3, 4, 5, 'INTRODUCTION TO DIGITAL MARKETING', 'ENGLISH', 300, 'Our \"Introduction to Digital Marketing\" course is designed to provide a comprehensive overview of the key concepts and tools used in digital marketing. Participants will learn the fundamentals of various digital marketing channels, including email marketing, content marketing, and paid advertising. Through interactive lessons and practical exercises, students will gain insights into audience targeting, campaign analysis, and creating effective digital marketing strategies. Whether you are new to the digital marketing field or looking to enhance your skills, this course offers a solid foundation for navigating the dynamic world of online marketing. Join us to unlock the potential of digital marketing and propel your brand to new heights in the digital realm.', '2023-08-01 16:23:57'),
+(10, 4, 5, 6, 'PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS', 'ENGLISH', 175, '\"Photography Essentials: Mastering the Art of Capturing Moments\" is a comprehensive e-learning experience crafted to hone your photography skills from the ground up. This course covers the fundamental principles of photography, such as understanding exposure, composition, and lighting. Through practical exercises and insightful lessons, participants will learn to create compelling visual narratives and enhance their creativity behind the lens. From mastering camera settings to post-processing techniques, this course equips you with the expertise to transform ordinary scenes into extraordinary works of art. Unleash your inner photographer and express yourself through the lens in this captivating journey of artistic exploration. Join us and learn how to immortalize the beauty of life one shot at a time.', '2023-08-01 16:35:58'),
+(11, 5, 1, 7, 'FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH', 'ENGLISH', 130, '\"Full-Stack Web Development: Building Dynamic Websites from Scratch\" is a comprehensive e-learning journey designed to equip you with the skills to create fully functional web applications. This course covers the entire development stack, from front-end technologies like HTML, CSS, and JavaScript, to back-end frameworks like Node.js and Express.js. Through hands-on projects and real-world scenarios, participants will gain a deep understanding of web development architecture and learn to design responsive and interactive websites. Explore the intricacies of databases, authentication, and deployment, as you embark on the path to becoming a proficient full-stack developer. Join us on this immersive experience and bring your creative ideas to life in the digital realm with cutting-edge web applications.', '2023-08-01 16:47:34'),
+(12, 6, 4, 14, 'MASTERING DIGITAL MARKETING STRATEGIES', 'ENGLISH', 350, 'Unlock the power of digital marketing with our comprehensive eLearning course led by John Smith, a seasoned digital marketing strategist. From SEO and social media to email marketing and analytics, this course equips you with essential skills to create effective digital marketing campaigns. Gain insights into the latest trends and best practices, and watch your online presence soar to new heights under the guidance of our expert instructor.', '2023-08-02 00:18:58');
 
 -- --------------------------------------------------------
 
@@ -205,21 +206,10 @@ INSERT INTO `istruttore` (`ID`, `ID_immagine`, `nome`, `cognome`, `professione`,
 
 CREATE TABLE `lezione` (
   `ID` int(10) UNSIGNED NOT NULL,
+  `ID_corso` int(10) UNSIGNED NOT NULL,
   `numero` int(11) NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `descrizione` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `materiale`
---
-
-CREATE TABLE `materiale` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `ID_lezione` int(11) UNSIGNED NOT NULL,
-  `ID_corso` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -248,8 +238,21 @@ CREATE TABLE `recensione` (
   `ID_iscrizione` int(11) UNSIGNED NOT NULL,
   `data` date NOT NULL,
   `ora` time NOT NULL,
+  `voto` int(10) UNSIGNED NOT NULL,
   `corpo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Trigger `recensione`
+--
+DELIMITER $$
+CREATE TRIGGER `check_nomecampo_range` BEFORE INSERT ON `recensione` FOR EACH ROW BEGIN
+    IF NEW.voto < 1 OR NEW.voto > 5 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Valore fuori dall''intervallo consentito (1-5)';
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -335,6 +338,7 @@ CREATE TABLE `storico_lezioni_corso` (
 
 CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
+  `ID_lezione` int(10) UNSIGNED NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(40) NOT NULL,
   `data` date NOT NULL,
@@ -349,8 +353,8 @@ CREATE TABLE `utente` (
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`ID`, `nome`, `cognome`, `data`, `citta`, `codice_fiscale`, `username`, `email`, `password`) VALUES
-(1, 'alberto', 'bogi', '2001-12-27', 'chieti', 'bgolrt01t27a515n', 'albebog', 'albertobogi01@gmail.com', '177dacb14b34103960ec27ba29bd686b');
+INSERT INTO `utente` (`ID`, `ID_lezione`, `nome`, `cognome`, `data`, `citta`, `codice_fiscale`, `username`, `email`, `password`) VALUES
+(1, 0, 'alberto', 'bogi', '2001-12-27', 'chieti', 'bgolrt01t27a515n', 'albebog', 'albertobogi01@gmail.com', '177dacb14b34103960ec27ba29bd686b');
 
 -- --------------------------------------------------------
 
@@ -360,7 +364,7 @@ INSERT INTO `utente` (`ID`, `nome`, `cognome`, `data`, `citta`, `codice_fiscale`
 
 CREATE TABLE `video` (
   `ID` int(10) UNSIGNED NOT NULL,
-  `ID_materiale` int(11) UNSIGNED NOT NULL,
+  `ID_lezione` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
   `file` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -381,7 +385,7 @@ ALTER TABLE `attestato`
 --
 ALTER TABLE `audio`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `materiale_for_audio` (`ID_materiale`);
+  ADD KEY `materiale_for_audio` (`ID_lezione`);
 
 --
 -- Indici per le tabelle `categoria`
@@ -430,15 +434,8 @@ ALTER TABLE `istruttore`
 -- Indici per le tabelle `lezione`
 --
 ALTER TABLE `lezione`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indici per le tabelle `materiale`
---
-ALTER TABLE `materiale`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `corso_for_materiale` (`ID_corso`),
-  ADD KEY `lezione_for_materiale` (`ID_lezione`);
+  ADD KEY `corso_for_lezione` (`ID_corso`);
 
 --
 -- Indici per le tabelle `notifica`
@@ -502,7 +499,7 @@ ALTER TABLE `utente`
 --
 ALTER TABLE `video`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `materiale_for_video` (`ID_materiale`);
+  ADD KEY `materiale_for_video` (`ID_lezione`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -560,12 +557,6 @@ ALTER TABLE `istruttore`
 -- AUTO_INCREMENT per la tabella `lezione`
 --
 ALTER TABLE `lezione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `materiale`
---
-ALTER TABLE `materiale`
   MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -636,7 +627,7 @@ ALTER TABLE `attestato`
 -- Limiti per la tabella `audio`
 --
 ALTER TABLE `audio`
-  ADD CONSTRAINT `materiale_for_audio` FOREIGN KEY (`ID_materiale`) REFERENCES `materiale` (`ID`);
+  ADD CONSTRAINT `lezione_for_audio` FOREIGN KEY (`ID_lezione`) REFERENCES `lezione` (`ID`);
 
 --
 -- Limiti per la tabella `categoria`
@@ -671,11 +662,10 @@ ALTER TABLE `istruttore`
   ADD CONSTRAINT `immagine_for_istruttore` FOREIGN KEY (`ID_immagine`) REFERENCES `immagine` (`ID`);
 
 --
--- Limiti per la tabella `materiale`
+-- Limiti per la tabella `lezione`
 --
-ALTER TABLE `materiale`
-  ADD CONSTRAINT `corso_for_materiale` FOREIGN KEY (`ID_corso`) REFERENCES `corso` (`ID`),
-  ADD CONSTRAINT `lezione_for_materiale` FOREIGN KEY (`ID_lezione`) REFERENCES `lezione` (`ID`);
+ALTER TABLE `lezione`
+  ADD CONSTRAINT `corso_for_lezione` FOREIGN KEY (`ID_corso`) REFERENCES `corso` (`ID`);
 
 --
 -- Limiti per la tabella `notifica`
@@ -720,7 +710,7 @@ ALTER TABLE `storico_lezioni_corso`
 -- Limiti per la tabella `video`
 --
 ALTER TABLE `video`
-  ADD CONSTRAINT `materiale_for_video` FOREIGN KEY (`ID_materiale`) REFERENCES `materiale` (`ID`);
+  ADD CONSTRAINT `lezione_for_video` FOREIGN KEY (`ID_lezione`) REFERENCES `lezione` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
