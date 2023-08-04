@@ -1,0 +1,75 @@
+<!-- Detail Start -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 mb-5 mb-lg-0">
+            <div class="position-relative">
+                <h1 class="display-4">
+                    Notifications
+                </h1>
+                <p>
+                    Unread messages: <[unread_messages]>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7 mt-3 mb-lg-0">
+            <div class="col-lg-12" style="padding:0">
+                <[foreach]>
+                    <div class="d-flex-notification pb-2 mb-2">
+                        <div class="btn-icon-notification bg-primary mr-4">
+                            <[envelope]>
+                        </div>
+                        <div class="mt-n1" style="width:90%">
+                            <h4>
+                                <[sender]>
+                            </h4>
+                            <p>
+                                <[time]>
+                            </p>
+                            <p>
+                                <[object]>
+                            </p>
+                        </div>
+                        <[id_notification]>
+                        
+                    </div>
+                    <[/foreach]>
+            </div>
+
+        </div>
+
+        <div id="message_body" class="col-lg-5 mt-3 mb-lg-0">
+            <div class="col-lg-12" style="padding:0">
+                <[message_body]>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-lg  mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link rounded-0" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item">
+                        <a class="page-link rounded-0" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -2377,6 +2377,7 @@ fieldset:disabled a.btn {
   border-color: #2878EB;
 }
 
+
 .btn-primary:hover {
   color: #fff;
   background-color: #1465d9;
@@ -6360,6 +6361,7 @@ a.close.disabled {
   background-color: #2878EB !important;
 }
 
+
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
@@ -6600,6 +6602,11 @@ button.bg-dark:focus {
 
 .d-flex {
   display: flex !important;
+}
+
+.d-flex-notification{
+  display: flex !important;
+  border-bottom: 2px solid #6B6A75;
 }
 
 .d-inline-flex {
@@ -9773,6 +9780,29 @@ h6,
   flex-shrink: 0;
 }
 
+.btn-icon-notification {
+  width: 77px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-notification {
+  color: white;
+  background-color: red;
+  border-color: red;
+  height: 40px;
+}
+
+
+.btn-notification:hover {
+  color: red;
+  background-color: white;
+  border-color: red;
+}
+
 .back-to-top {
   position: fixed;
   display: none;
@@ -10026,5 +10056,28 @@ h6,
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: #FFF;
+}
+
+.notification-icon {
+  position: relative;
+  font-size: em;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.notification-nav-bar{
+  cursor: pointer;
+}
+
+.notification-nav-bar:hover{
+  cursor: pointer;
+  font-size:18px;
 }
