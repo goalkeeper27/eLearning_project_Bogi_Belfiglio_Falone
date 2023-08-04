@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -81,7 +82,7 @@
                             <input type="date" name="data" placeholder="Inserisci la tua data di nascita" required />
                         </div>
                         <div class="form_login">
-                            <label class="mr-2">Città:</label>
+                            <label class="mr-2">Città di nascita:</label>
                             <input type="text" name="citta" placeholder="Inserisci la tua città di nascita" required />
                         </div>
                         <div class="form_login">
@@ -102,9 +103,9 @@
                         </div>
                         <div class="form_login">
                             <label class="mr-2">Ripeti Password:</label>
-                            <input type="password" name="password_ripetuta" id="password_ripetuta" placeholder="Inserisci nuovamente la password" onchange="psw_control()" required />
+                            <input type="password" name="password_ripetuta" id="password_ripetuta" placeholder="Inserisci nuovamente la password" oninput="psw_control()" required />
                         </div>
-                        <p id="message_error" style="color:red;"></p>
+                        <p id="message_error"></p>
                         <div class="form_login">
                             <button type="submit" name="login" id="registrati">Registrati</button>
                         </div>

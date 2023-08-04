@@ -9989,10 +9989,13 @@ h6,
   margin-top: 5px;
 }
 
+.successo:focus {
+  border: 2px solid green;
+}
+
 .form_login input:focus {
   width: 60%;
   padding: 8px;
-  border: 1px solid #CCC;
   border-radius: 3px;
   margin-top: 5px;
   background-color: #efefef;
