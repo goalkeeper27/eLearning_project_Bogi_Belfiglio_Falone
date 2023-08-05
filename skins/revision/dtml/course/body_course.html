@@ -55,7 +55,10 @@
                     <h5 class="text-white py-3 px-4 m-0">Course Price: <[price]>
                     </h5>
                     <div class="py-3 px-4">
-                        <a class="btn btn-block btn-secondary py-3 px-5" href="">Enroll Now</a>
+                        <form  id="enroll_course" action="/enroll_course.php" method="POST">
+                            <[input_id_course]>
+                            <a class="btn btn-block btn-secondary py-3 px-5" href="#" onclick="submitCourseDetail('enroll_course')">Enroll Now</a>
+                        </form>
                     </div>
                 </div>
 

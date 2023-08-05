@@ -134,8 +134,8 @@ if ($total_index <= 3) {
 
 }
 
-$min = 6 * $index - 5; //Se index è 1 il min deve essere 1 e il max deve essere 6
-$max = 6 * $index; // Se index è 2 il min deve essere 7 e max 12 ecc... devi trovare delle espressioni con dentro index per definire il min e max
+
+$min = 6 * $index - 6; //Se index è 1 il min deve essere 1 e il max deve essere 6
 
 if (isset($_POST['id_notification'])) {
     $body->setContent("message_body", $message_body->get());
@@ -144,7 +144,7 @@ if (isset($_POST['id_notification'])) {
 }
 
 $notification = $mysql->query("SELECT N.* FROM notifica N INNER JOIN utente U ON U.ID = N.ID_utente WHERE U.username = '" . $user .
-    "' ORDER BY N.data DESC,N.ora DESC LIMIT $min, $max");
+    "' ORDER BY N.data DESC,N.ora DESC LIMIT $min, 6");
 
 if ($notification->num_rows > 0) {
     while ($row = $notification->fetch_assoc()) {

@@ -64,29 +64,7 @@ while ($row = $related_courses->fetch_assoc()) {
     );
 }
 
-/*
-$votations_average = $mysql->query("SELECT COUNT(R.ID) as valutazione
-FROM recensione R INNER JOIN storico_iscrizioni_corso SIC ON R.ID_iscrizione = SIC.ID INNER JOIN corso C ON C.ID = SIC.ID_corso
-WHERE C.ID = $id_corso");
-
-if ($votations_average && $votations_average->num_rows > 0) {
-    $row = $votations_average->fetch_assoc();
-    $body->setContent('rating', $row['valutazione']);
-}
-*/
-
-
-
-
-$immagine_query = $mysql->query("SELECT I.file as immagine, I.titolo as alt FROM 
-        Corso C INNER JOIN Immagine I ON I.ID = C.ID_immagine WHERE C.ID = $id_corso");
-if ($immagine_query && $immagine_query->num_rows > 0) {
-    $row = $immagine_query->fetch_assoc();
-    $image = $row['immagine'];
-    $base64Image = base64_encode($image);
-} else {
-    $base64Image = ""; // Se non viene trovata un'immagine, lasciamo vuota la stringa base64.
-}
+$body->setContent("input_id_course", '<input type="hidden" name="id_course" value="'. $id_corso .'" />');
 
 
 
