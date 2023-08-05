@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 03, 2023 alle 13:20
+-- Creato il: Ago 05, 2023 alle 11:51
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -56,6 +56,7 @@ CREATE TABLE `audio` (
 CREATE TABLE `categoria` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_responsabile` int(11) UNSIGNED NOT NULL,
+  `ID_immagine` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
   `descrizione` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -64,11 +65,11 @@ CREATE TABLE `categoria` (
 -- Dump dei dati per la tabella `categoria`
 --
 
-INSERT INTO `categoria` (`ID`, `ID_responsabile`, `nome`, `descrizione`) VALUES
-(1, 1, 'IT PROGRAMMING AND WEB DEVELOPMENT', 'Our Computer Programming Courses offer a diverse selection of hands-on learning experiences in the dynamic field of IT programming. Designed to cater to all skill levels, from beginners to advanced learners, these courses delve into various programming languages and concepts. Participants will gain a comprehensive understanding of programming fundamentals, algorithm design, data structures, and problem-solving techniques. Through practical projects and real-world applications, students will develop the skills to create software solutions and embrace innovation in the ever-evolving world of technology. Whether you aspire to become a software developer or wish to upgrade your programming prowess, these courses provide the essential knowledge and tools to excel in the exciting realm of computer programming. Join us and embark on a rewarding journey to shape the future with code!'),
-(3, 2, 'VISUAL ARTS AND DESIGN', 'Explore the fascinating world of visual arts and design with our wide range of courses. From graphic design to digital illustration, discover the principles and techniques that bring creativity to life. Whether you\'re a budding artist or an aspiring designer, these courses will ignite your passion for artistic expression and equip you with the skills to create captivating visuals'),
-(4, 3, 'DIGITAL MARKETING AND ADVERTISING', 'Explore the ever-evolving landscape of digital marketing and advertising with our diverse range of courses. From search engine optimization (SEO) to social media marketing, discover the strategies and techniques that drive online engagement and business growth. Whether you are an aspiring marketer or a business owner seeking to expand your digital presence, these courses offer invaluable insights into the world of digital marketing and its impact on today\'s interconnected consumers.'),
-(5, 4, 'VISUAL ARTS AND PHOTOGRAPHY', 'Embark on a visual journey through the world of art and photography with our diverse selection of courses. From mastering the art of composition to exploring advanced photo editing techniques, our courses offer a creative outlet for aspiring photographers and art enthusiasts alike. Discover the power of visual storytelling and the technical skills needed to capture captivating moments that leave a lasting impact. Whether you are a beginner or an experienced photographer, these courses provide a platform to refine your artistic vision and showcase your unique perspective to the world.');
+INSERT INTO `categoria` (`ID`, `ID_responsabile`, `ID_immagine`, `nome`, `descrizione`) VALUES
+(1, 1, 1, 'IT PROGRAMMING AND WEB DEVELOPMENT', 'Our Computer Programming Courses offer a diverse selection of hands-on learning experiences in the dynamic field of IT programming. Designed to cater to all skill levels, from beginners to advanced learners, these courses delve into various programming languages and concepts. Participants will gain a comprehensive understanding of programming fundamentals, algorithm design, data structures, and problem-solving techniques. Through practical projects and real-world applications, students will develop the skills to create software solutions and embrace innovation in the ever-evolving world of technology. Whether you aspire to become a software developer or wish to upgrade your programming prowess, these courses provide the essential knowledge and tools to excel in the exciting realm of computer programming. Join us and embark on a rewarding journey to shape the future with code!'),
+(3, 2, 1, 'VISUAL ARTS AND DESIGN', 'Explore the fascinating world of visual arts and design with our wide range of courses. From graphic design to digital illustration, discover the principles and techniques that bring creativity to life. Whether you\'re a budding artist or an aspiring designer, these courses will ignite your passion for artistic expression and equip you with the skills to create captivating visuals'),
+(4, 3, 1, 'DIGITAL MARKETING AND ADVERTISING', 'Explore the ever-evolving landscape of digital marketing and advertising with our diverse range of courses. From search engine optimization (SEO) to social media marketing, discover the strategies and techniques that drive online engagement and business growth. Whether you are an aspiring marketer or a business owner seeking to expand your digital presence, these courses offer invaluable insights into the world of digital marketing and its impact on today\'s interconnected consumers.'),
+(5, 4, 1, 'VISUAL ARTS AND PHOTOGRAPHY', 'Embark on a visual journey through the world of art and photography with our diverse selection of courses. From mastering the art of composition to exploring advanced photo editing techniques, our courses offer a creative outlet for aspiring photographers and art enthusiasts alike. Discover the power of visual storytelling and the technical skills needed to capture captivating moments that leave a lasting impact. Whether you are a beginner or an experienced photographer, these courses provide a platform to refine your artistic vision and showcase your unique perspective to the world.');
 
 -- --------------------------------------------------------
 
@@ -93,12 +94,12 @@ CREATE TABLE `corso` (
 --
 
 INSERT INTO `corso` (`ID`, `ID_istruttore`, `ID_categoria`, `ID_immagine`, `nome`, `lingua`, `prezzo`, `descrizione`, `data_inserimento`) VALUES
-(6, 1, 1, 3, 'FUNDAMENTALS OF PYTHON PROGRAMMING', 'ENGLISH', 250, 'Discover the core concepts of Python programming with our comprehensive E-Learning course. Perfect for beginners and those new to coding, this course covers essential topics such as variables, data types, control structures, and functions in Python. Through interactive lessons and hands-on exercises, you\'ll develop a solid foundation in Python syntax and programming logic. Explore the world of Python and unlock the potential for creating practical applications and solving real-world problems. Get started on your coding journey today with the Fundamentals of Python Programming course!', '2023-08-01 16:01:00'),
-(8, 2, 3, 4, 'GRAPHIC DESIGN FUNDAMENTALS', 'ENGLISH', 120, 'Our \"Graphic Design Fundamentals\" course is a comprehensive e-learning experience that introduces you to the core concepts of graphic design. Through interactive lessons and hands-on projects, you\'ll learn the principles of layout, color theory, typography, and composition. Explore popular design software and unleash your creativity while creating engaging designs for various mediums. Perfect for beginners and enthusiasts alike, this course is your gateway to mastering the art of graphic design and unlocking your creative potential. Join us on this inspiring journey into the world of visual communication!', '2023-08-01 16:06:34'),
-(9, 3, 4, 5, 'INTRODUCTION TO DIGITAL MARKETING', 'ENGLISH', 300, 'Our \"Introduction to Digital Marketing\" course is designed to provide a comprehensive overview of the key concepts and tools used in digital marketing. Participants will learn the fundamentals of various digital marketing channels, including email marketing, content marketing, and paid advertising. Through interactive lessons and practical exercises, students will gain insights into audience targeting, campaign analysis, and creating effective digital marketing strategies. Whether you are new to the digital marketing field or looking to enhance your skills, this course offers a solid foundation for navigating the dynamic world of online marketing. Join us to unlock the potential of digital marketing and propel your brand to new heights in the digital realm.', '2023-08-01 16:23:57'),
-(10, 4, 5, 6, 'PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS', 'ENGLISH', 175, '\"Photography Essentials: Mastering the Art of Capturing Moments\" is a comprehensive e-learning experience crafted to hone your photography skills from the ground up. This course covers the fundamental principles of photography, such as understanding exposure, composition, and lighting. Through practical exercises and insightful lessons, participants will learn to create compelling visual narratives and enhance their creativity behind the lens. From mastering camera settings to post-processing techniques, this course equips you with the expertise to transform ordinary scenes into extraordinary works of art. Unleash your inner photographer and express yourself through the lens in this captivating journey of artistic exploration. Join us and learn how to immortalize the beauty of life one shot at a time.', '2023-08-01 16:35:58'),
-(11, 5, 1, 7, 'FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH', 'ENGLISH', 130, '\"Full-Stack Web Development: Building Dynamic Websites from Scratch\" is a comprehensive e-learning journey designed to equip you with the skills to create fully functional web applications. This course covers the entire development stack, from front-end technologies like HTML, CSS, and JavaScript, to back-end frameworks like Node.js and Express.js. Through hands-on projects and real-world scenarios, participants will gain a deep understanding of web development architecture and learn to design responsive and interactive websites. Explore the intricacies of databases, authentication, and deployment, as you embark on the path to becoming a proficient full-stack developer. Join us on this immersive experience and bring your creative ideas to life in the digital realm with cutting-edge web applications.', '2023-08-01 16:47:34'),
-(12, 6, 4, 14, 'MASTERING DIGITAL MARKETING STRATEGIES', 'ENGLISH', 350, 'Unlock the power of digital marketing with our comprehensive eLearning course led by John Smith, a seasoned digital marketing strategist. From SEO and social media to email marketing and analytics, this course equips you with essential skills to create effective digital marketing campaigns. Gain insights into the latest trends and best practices, and watch your online presence soar to new heights under the guidance of our expert instructor.', '2023-08-02 00:18:58');
+(1, 1, 1, 3, 'FUNDAMENTALS OF PYTHON PROGRAMMING', 'ENGLISH', 250, 'Discover the core concepts of Python programming with our comprehensive E-Learning course. Perfect for beginners and those new to coding, this course covers essential topics such as variables, data types, control structures, and functions in Python. Through interactive lessons and hands-on exercises, you\'ll develop a solid foundation in Python syntax and programming logic. Explore the world of Python and unlock the potential for creating practical applications and solving real-world problems. Get started on your coding journey today with the Fundamentals of Python Programming course!', '2023-08-01 16:01:00'),
+(2, 2, 3, 4, 'GRAPHIC DESIGN FUNDAMENTALS', 'ENGLISH', 120, 'Our \"Graphic Design Fundamentals\" course is a comprehensive e-learning experience that introduces you to the core concepts of graphic design. Through interactive lessons and hands-on projects, you\'ll learn the principles of layout, color theory, typography, and composition. Explore popular design software and unleash your creativity while creating engaging designs for various mediums. Perfect for beginners and enthusiasts alike, this course is your gateway to mastering the art of graphic design and unlocking your creative potential. Join us on this inspiring journey into the world of visual communication!', '2023-08-01 16:06:34'),
+(3, 3, 4, 5, 'INTRODUCTION TO DIGITAL MARKETING', 'ENGLISH', 300, 'Our \"Introduction to Digital Marketing\" course is designed to provide a comprehensive overview of the key concepts and tools used in digital marketing. Participants will learn the fundamentals of various digital marketing channels, including email marketing, content marketing, and paid advertising. Through interactive lessons and practical exercises, students will gain insights into audience targeting, campaign analysis, and creating effective digital marketing strategies. Whether you are new to the digital marketing field or looking to enhance your skills, this course offers a solid foundation for navigating the dynamic world of online marketing. Join us to unlock the potential of digital marketing and propel your brand to new heights in the digital realm.', '2023-08-01 16:23:57'),
+(4, 4, 5, 6, 'PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS', 'ENGLISH', 175, '\"Photography Essentials: Mastering the Art of Capturing Moments\" is a comprehensive e-learning experience crafted to hone your photography skills from the ground up. This course covers the fundamental principles of photography, such as understanding exposure, composition, and lighting. Through practical exercises and insightful lessons, participants will learn to create compelling visual narratives and enhance their creativity behind the lens. From mastering camera settings to post-processing techniques, this course equips you with the expertise to transform ordinary scenes into extraordinary works of art. Unleash your inner photographer and express yourself through the lens in this captivating journey of artistic exploration. Join us and learn how to immortalize the beauty of life one shot at a time.', '2023-08-01 16:35:58'),
+(5, 5, 1, 7, 'FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH', 'ENGLISH', 130, '\"Full-Stack Web Development: Building Dynamic Websites from Scratch\" is a comprehensive e-learning journey designed to equip you with the skills to create fully functional web applications. This course covers the entire development stack, from front-end technologies like HTML, CSS, and JavaScript, to back-end frameworks like Node.js and Express.js. Through hands-on projects and real-world scenarios, participants will gain a deep understanding of web development architecture and learn to design responsive and interactive websites. Explore the intricacies of databases, authentication, and deployment, as you embark on the path to becoming a proficient full-stack developer. Join us on this immersive experience and bring your creative ideas to life in the digital realm with cutting-edge web applications.', '2023-08-01 16:47:34'),
+(6, 6, 4, 14, 'MASTERING DIGITAL MARKETING STRATEGIES', 'ENGLISH', 350, 'Unlock the power of digital marketing with our comprehensive eLearning course led by John Smith, a seasoned digital marketing strategist. From SEO and social media to email marketing and analytics, this course equips you with essential skills to create effective digital marketing campaigns. Gain insights into the latest trends and best practices, and watch your online presence soar to new heights under the guidance of our expert instructor.', '2023-08-02 00:18:58');
 
 -- --------------------------------------------------------
 
@@ -221,11 +222,64 @@ CREATE TABLE `lezione` (
 CREATE TABLE `notifica` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_utente` int(10) UNSIGNED NOT NULL,
+  `mittente` varchar(100) NOT NULL,
   `data` date NOT NULL,
   `ora` time NOT NULL,
   `oggetto` text NOT NULL,
-  `corpo` text NOT NULL
+  `corpo` text NOT NULL,
+  `visto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `notifica`
+--
+
+INSERT INTO `notifica` (`ID`, `ID_utente`, `mittente`, `data`, `ora`, `oggetto`, `corpo`, `visto`) VALUES
+(1, 1, 'E-LEARNING FBB COMMUNITY', '2023-08-03', '18:57:17', 'prova', 'prova della prova per provare', 1),
+(2, 1, 'Utente2', '2023-08-03', '12:30:00', 'Nuovo messaggio', 'Hai ricevuto un nuovo messaggio.', 1),
+(3, 1, 'Amministratore', '2023-08-04', '10:15:00', 'Aggiornamenti', 'Ci saranno degli aggiornamenti di sistema il prossimo fine settimana.', 1),
+(4, 1, 'Utente3', '2023-08-05', '16:45:00', 'Invito a un corso', 'Sei stato invitato a partecipare a un corso sullo sviluppo web.', 1),
+(5, 1, 'Amministratore', '2023-08-06', '09:00:00', 'Riavvio del server', 'Il server sarà riavviato per manutenzione tra 30 minuti.', 1),
+(6, 1, 'Utente4', '2023-08-07', '14:20:00', 'Nuovo post nel forum', 'Un utente ha pubblicato un nuovo post nel forum.', 1),
+(7, 1, 'Amministratore', '2023-08-08', '11:30:00', 'Aggiornamento password', 'Si prega di aggiornare la password per motivi di sicurezza.', 1),
+(8, 1, 'John Doe', '2023-08-03', '09:00:00', 'New Message', 'You have a new message.', 0),
+(9, 1, 'Alice Smith', '2023-08-04', '10:30:00', 'Important Update', 'Please review the latest updates.', 1),
+(10, 1, 'Jane Johnson', '2023-08-05', '15:45:00', 'Event Invitation', 'You are invited to the upcoming event.', 1),
+(11, 1, 'Mark Brown', '2023-08-06', '11:15:00', 'Meeting Reminder', 'Don\'t forget about our meeting tomorrow.', 0),
+(12, 1, 'Emily Wilson', '2023-08-07', '08:30:00', 'Report Submission', 'Please submit your report by the deadline.', 1),
+(13, 1, 'Michael Davis', '2023-08-08', '14:00:00', 'Feedback Request', 'We would like your feedback on our services.', 0),
+(14, 1, 'Sarah White', '2023-08-09', '17:20:00', 'New Feature Announcement', 'Exciting new features are now available.', 0),
+(15, 1, 'Daniel Lee', '2023-08-10', '09:45:00', 'Vacation Notice', 'I will be on vacation next week.', 0),
+(16, 1, 'Olivia Miller', '2023-08-11', '13:30:00', 'Training Session', 'Training session scheduled for next Monday.', 1),
+(17, 1, 'Robert Johnson', '2023-08-12', '16:15:00', 'Project Update', 'Here\'s the latest update on the project.', 0),
+(18, 1, 'Sophia Anderson', '2023-08-13', '10:00:00', 'New Announcement', 'Check out our latest company announcement.', 0),
+(19, 1, 'William Martinez', '2023-08-14', '11:30:00', 'Upcoming Maintenance', 'Maintenance is scheduled for next weekend.', 0),
+(20, 1, 'Ava Jackson', '2023-08-15', '14:45:00', 'Team Building Event', 'Join us for a team-building event.', 1),
+(21, 1, 'James Taylor', '2023-08-16', '10:45:00', 'Product Launch', 'Our new product is now available!', 0),
+(22, 1, 'Emma Hernandez', '2023-08-17', '12:00:00', 'Webinar Invitation', 'Don\'t miss our upcoming webinar.', 0),
+(23, 1, 'Liam Brown', '2023-08-18', '09:30:00', 'Task Reminder', 'Remember to complete your assigned task.', 1),
+(24, 1, 'Mia Davis', '2023-08-19', '15:15:00', 'Holiday Schedule', 'View the holiday schedule for this year.', 0),
+(25, 1, 'Benjamin Martinez', '2023-08-20', '13:00:00', 'Feedback Submission', 'Submit your feedback by the end of the week.', 0),
+(26, 1, 'Sophie Brown', '2023-08-21', '14:30:00', 'New Opportunity', 'Exciting new opportunities await!', 0),
+(27, 1, 'Lucas Wilson', '2023-08-22', '11:45:00', 'Task Assignment', 'You\'ve been assigned a new task.', 1),
+(28, 1, 'Chloe Davis', '2023-08-23', '09:15:00', 'Product Update', 'Our product has been updated with new features.', 0),
+(29, 1, 'Ethan Smith', '2023-08-24', '15:00:00', 'Meeting Invitation', 'You are invited to a meeting next week.', 0),
+(30, 1, 'Grace Johnson', '2023-08-25', '10:30:00', 'Report Review', 'Please review the latest report.', 1),
+(31, 1, 'Logan Martinez', '2023-08-26', '12:45:00', 'Project Status', 'Check the current status of the project.', 0),
+(32, 1, 'Avery Taylor', '2023-08-27', '14:00:00', 'Training Announcement', 'New training sessions are available.', 0),
+(33, 1, 'Abigail Miller', '2023-08-28', '11:00:00', 'Upcoming Event', 'Don\'t miss our upcoming event.', 1),
+(34, 1, 'Jackson Anderson', '2023-08-29', '09:30:00', 'Holiday Notice', 'View the upcoming holiday schedule.', 0),
+(35, 1, 'Scarlett Wilson', '2023-08-30', '13:15:00', 'Product Demo', 'Join us for a product demo session.', 0),
+(36, 1, 'Liam Johnson', '2023-08-31', '16:45:00', 'Feedback Collection', 'We value your feedback. Share your thoughts!', 0),
+(37, 1, 'Zoe Brown', '2023-09-01', '10:15:00', 'New Task List', 'Check out the updated task list.', 1),
+(38, 1, 'Aiden Davis', '2023-09-02', '14:30:00', 'Important Announcement', 'An important announcement awaits you.', 0),
+(39, 1, 'Mia Taylor', '2023-09-03', '09:45:00', 'Workshop Registration', 'Register for our upcoming workshop.', 0),
+(40, 1, 'Sebastian Martinez', '2023-09-04', '11:00:00', 'Monthly Report', 'Submit your monthly report by the deadline.', 1),
+(41, 1, 'Lily Johnson', '2023-09-05', '15:30:00', 'Training Feedback', 'Share your feedback about the recent training.', 0),
+(42, 1, 'Carter Smith', '2023-09-06', '10:45:00', 'New Assignment', 'You\'ve been assigned a new task.', 0),
+(43, 1, 'Grace Martinez', '2023-09-07', '13:00:00', 'Team Building Event', 'Join us for a team-building event.', 1),
+(44, 1, 'Oliver Taylor', '2023-09-08', '16:15:00', 'Product Launch', 'Our new product is now available!', 0),
+(45, 1, 'Ella Johnson', '2023-09-09', '09:30:00', 'Webinar Invitation', 'Don\'t miss our upcoming webinar.', 1);
 
 -- --------------------------------------------------------
 
@@ -392,7 +446,8 @@ ALTER TABLE `audio`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `responsabile_for_categoria` (`ID_responsabile`);
+  ADD KEY `responsabile_for_categoria` (`ID_responsabile`),
+  ADD KEY `immagine_for_categoria` (`ID_immagine`);
 
 --
 -- Indici per le tabelle `corso`
@@ -527,7 +582,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT per la tabella `corso`
 --
 ALTER TABLE `corso`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `domanda`
@@ -563,7 +618,7 @@ ALTER TABLE `lezione`
 -- AUTO_INCREMENT per la tabella `notifica`
 --
 ALTER TABLE `notifica`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT per la tabella `recensione`
@@ -633,6 +688,7 @@ ALTER TABLE `audio`
 -- Limiti per la tabella `categoria`
 --
 ALTER TABLE `categoria`
+  ADD CONSTRAINT `immagine_for_categoria` FOREIGN KEY (`ID_immagine`) REFERENCES `immagine` (`ID`),
   ADD CONSTRAINT `responsabile_for_categoria` FOREIGN KEY (`ID_responsabile`) REFERENCES `responsabile` (`ID`);
 
 --

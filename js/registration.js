@@ -13,9 +13,11 @@ function psw_control() {
         },
         success: function (response) {
             if (response === 'coincide') {
+                message_error.style.color = "red";
                 message_error.innerText = "";
                 button_registrati.disabled = false;
             } else {
+                message_error.style.color = "red";
                 message_error.innerText = "password non coincidenti";
                 button_registrati.disabled = true;
             }
