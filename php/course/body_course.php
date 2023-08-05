@@ -43,7 +43,7 @@ $id_category_query = $mysql->query("SELECT ID_categoria FROM corso WHERE ID = $i
 $id_category_result = $id_category_query->fetch_assoc();
 $id_category = $id_category_result["ID_categoria"];
 
-$related_courses = $mysql->query("SELECT * FROM corso WHERE ID_categoria = $id_category");
+$related_courses = $mysql->query("SELECT * FROM corso WHERE ID_categoria = $id_category AND ID <> $id_corso");
 while ($row = $related_courses->fetch_assoc()) {
     $id = $row['ID'];
     $course = $mysql->query("SELECT C.*, I.titolo as alt, I.file as immagine, IST.nome as nome_istruttore, IST.cognome as cognome_istruttore FROM 

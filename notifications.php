@@ -5,9 +5,10 @@ require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
-require "php/navbar/navbar.php";
 require "php/notifications/header_notifications.php";
 require "php/notifications/body_notifications.php";
+require "php/navbar/navbar.php";
+
 
 #definiamo il template scheletro
 $main = new Template("skins/revision/dtml/index_v1.html");
