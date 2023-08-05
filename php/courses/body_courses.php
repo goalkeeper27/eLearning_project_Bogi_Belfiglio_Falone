@@ -22,9 +22,8 @@ $indici_totali = ceil($totalRecords / 6); //approssimo per eccesso il risultato,
 $content = '';
 
 for($i = 1; $i<$indici_totali+1; $i++){
-    //echo "alert(".$i.")";
     $content.= '<li class="page-item">
-                <form id="index_'.$i.'" method="POST" action="courses.php">
+                <form id="index_'.$i.'" method="POST" action="courses.php#anchor">
                 <input type="hidden" name="index" value="'.$i.'" />
                 <a class="page-link" id="'.$i.'" href="#" onclick="submitCourseDetail(\'index_'.$i.'\')">'.$i.'</a>
                 </form>
@@ -32,9 +31,19 @@ for($i = 1; $i<$indici_totali+1; $i++){
 }
 $body->setContent('index', $content);
 
-$min = 6*$index-5; //Se index è 1 il min deve essere 1 e il max deve essere 6
-$max = 6*$index; // Se index è 2 il min deve essere 7 e max 12 ecc... devi trovare delle espressioni con dentro index per definire il min e max
-$courses = $mysql->query("SELECT * FROM corso WHERE ID BETWEEN $min AND $max LIMIT 6");
+if($index == 1){
+    $min = 0;
+}else{
+    $min = 6*$index-5;
+}
+$max = 6*$index;
+
+if(isset($_POST['id_category'])){
+    $id_category = $_POST['id_category'];
+    $courses = $mysql->query("SELECT C.* FROM corso C INNER JOIN Categoria Cat ON C.ID_categoria = Cat.ID WHERE C.ID_categoria = $id_category LIMIT $min, $max");
+}else{
+    $courses = $mysql->query("SELECT * FROM corso LIMIT $min, $max");
+}
 while($row = $courses->fetch_assoc()){
     $id = $row['ID'];
     $course = $mysql->query("SELECT C.*, I.titolo as alt, I.file as immagine, IST.nome as nome_istruttore, IST.cognome as cognome_istruttore FROM 
@@ -50,6 +59,9 @@ while($row = $courses->fetch_assoc()){
     $body->setContent("instructor_course", $result_course["nome_istruttore"]." ".$result_course["cognome_istruttore"]);
     $body->setContent("price_course", $result_course["prezzo"]);
     $body->setContent("tag_closure", "</a></form>");
+
 }
+
+
 
 ?>
