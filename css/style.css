@@ -9905,6 +9905,23 @@ h6,
   z-index: 1;
 }
 
+.mycourses-item .courses-text,
+.courses-list-item .courses-text  {
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 86px);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, rgba(18, 15, 45, 0), #120f2d);
+  transition: .5s;
+  z-index: 1;
+
+}
+
 .courses-list-item .courses-text {
   height: 100%;
 }
