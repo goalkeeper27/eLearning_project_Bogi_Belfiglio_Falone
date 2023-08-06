@@ -16,38 +16,139 @@ if($number_category->num_rows > 0){
     $totalRecords = 0;
 }
 
-$indici_totali = ceil($totalRecords / 6);
+$total_index = ceil($totalRecords / 6);
 
-$content = '';
+//index check for view
+if ($total_index <= 3) {
+    for ($i = 1; $i <= $total_index; $i++) {
+        if ($i == $index) {
+            $body->setContent('index', ' <li class="page-item active">
+                                    <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $i . '" />
+                                        <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                    </form>
+                                    </li>');
+        } else {
+            $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $i . '" />
+                                        <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                    </form>
+                                    </li>');
+        }
+    }
 
-for($i = 1; $i<$indici_totali+1; $i++){
-    $content.= '<li class="page-item">
-                <form id="index_category_'.$i.'" method="POST" action="category.php#anchor">
-                <input type="hidden" name="index" value="'.$i.'" />
-                <a class="page-link" id="'.$i.'" href="#" onclick="submitCourseDetail(\'index_category_'.$i.'\')">'.$i.'</a>
-                </form>
-                </li>';
+} else if ($total_index > 3 && $index <= 2) {
+    for ($i = 1; $i <= 3; $i++) {
+        if ($i == $index) {
+            $body->setContent('index', ' <li class="page-item active">
+                                    <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $i . '" />
+                                        <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                    </form>
+                                    </li>');
+        } else {
+            $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $i . '" />
+                                        <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                    </form>
+                                    </li>');
+        }
+    }
+
+    $body->setContent('index', ' <li class="page-item"> <a class="page-link href="#">...</a> </li>');
+    $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_' . $total_index . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $total_index . '" />
+                                        <a class="page-link" id="' . $total_index . '" href="#" onclick="submitCourseDetail(\'index_category_' . $total_index . '\')">' . $total_index . ' </a>
+                                    </form>
+                                    </li>');
+} else if ($total_index > 3 && ($index > 2 && $index < ($total_index - 1))) {
+    $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_1" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="1" />
+                                        <a class="page-link" id="1" href="#" onclick="submitCourseDetail(\'index_category_1\')">1</a>
+                                    </form>
+                                    </li>');
+    $body->setContent('index', ' <li class="page-item"> <a class="page-link href="#">...</a> </li>');
+
+    for ($i = $index - 1; $i <= $index + 1; $i++) {
+        if ($i == $index) {
+            $body->setContent('index', ' <li class="page-item active">
+                                        <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                            <input type="hidden" name="index" value="' . $i . '" />
+                                            <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                        </form>
+                                        </li>');
+        } else {
+            $body->setContent('index', ' <li class="page-item">
+                                        <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                            <input type="hidden" name="index" value="' . $i . '" />
+                                            <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                        </form>
+                                        </li>');
+        }
+    }
+
+    $body->setContent('index', ' <li class="page-item"> <a class="page-link href="#">...</a> </li>');
+    $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_' . $total_index . '" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="' . $total_index . '" />
+                                        <a class="page-link" id="' . $total_index . '" href="#" onclick="submitCourseDetail(\'index_category_' . $total_index . '\')">' . $total_index . '</a>
+                                    </form>
+                                    </li>');
+
+
+
+} else {
+    $body->setContent('index', ' <li class="page-item">
+                                    <form id="index_category_1" method="POST" action="category.php#anchor">
+                                        <input type="hidden" name="index" value="1" />
+                                        <a class="page-link" id="1" href="#" onclick="submitCourseDetail(\'index_category_1\')">1</a>
+                                    </form>
+                                    </li>');
+    $body->setContent('index', ' <li class="page-item"> <a class="page-link href="#">...</a> </li>');
+
+    for ($i = $total_index - 2; $i <= $total_index; $i++) {
+        if ($i == $index) {
+            $body->setContent('index', ' <li class="page-item active">
+                                        <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                            <input type="hidden" name="index" value="' . $i . '" />
+                                            <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category' . $i . '\')">' . $i . '</a>
+                                        </form>
+                                        </li>');
+        } else {
+            $body->setContent('index', ' <li class="page-item">
+                                        <form id="index_category_' . $i . '" method="POST" action="category.php#anchor">
+                                            <input type="hidden" name="index" value="' . $i . '" />
+                                            <a class="page-link" id="' . $i . '" href="#" onclick="submitCourseDetail(\'index_category_' . $i . '\')">' . $i . '</a>
+                                        </form>
+                                        </li>');
+        }
+    }
+
 }
-$body->setContent('index', $content);
-if($index == 1){
-    $min = 0;
-}else{
-    $min = 6*$index-5;
-}
-                    //Se index è 1 il min deve essere 1 e il max deve essere 6
-$max = 6*$index;    // Se index è 2 il min deve essere 7 e max 12 ecc... devi trovare delle espressioni con dentro index per definire il min e max
-$courses = $mysql->query("SELECT * FROM categoria LIMIT $min, $max");
+
+
+$min = 6*$index-6;
+
+$courses = $mysql->query("SELECT * FROM categoria LIMIT $min, 6");
 while($row = $courses->fetch_assoc()){
     $id = $row['ID'];
-    $category = $mysql->query("SELECT C.*, I.titolo as alt, I.file as immagine FROM Categoria C INNER JOIN Immagine I ON C.ID_immagine = I.ID WHERE C.ID = $id");
+    $category = $mysql->query("SELECT C.*, R.nome as nome_responsabile, R.cognome as cognome_responsabile, I.titolo as alt, I.file as immagine FROM Categoria C INNER JOIN Immagine I ON C.ID_immagine = I.ID INNER JOIN Responsabile R ON 
+    C.ID_responsabile = R.ID WHERE C.ID = $id");
 
     $result_category = $category->fetch_assoc();
-    $body->setContent('category_image', '<form id="category_'. $result_category["ID"] .'" method="POST" action="courses.php">
-                                        <input type="hidden" name="id_category" value="'. $result_category["ID"] .'" />
-                                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="#" onclick="submitCourseDetail(\'category_'. $result_category["ID"] .'\')">
-                                        <img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($result_category["immagine"]) . '" alt="'. $result_category["alt"] .'">');
+    $body->setContent('category_image', '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($result_category["immagine"]) . '" alt="'. $result_category["alt"] .'">');
     $body->setContent("category_title", $result_category["nome"]);
-    $body->setContent("tag_closure", "</a></form>");
+    $body ->setContent("category_manager", $result_category['nome_responsabile']." ".$result_category['cognome_responsabile']);
+    $body->setContent("category_detail", '<form id="category_'. $result_category["ID"] .'" method="POST" action="courses.php">
+                                            <input type="hidden" name="id_category" value="'. $result_category["ID"] .'" />
+                                                <a class="btn btn-primary" href="#" onclick="submitCourseDetail(\'category_'. $result_category["ID"] .'\')">
+                                                    Category Detail
+                                                </a>
+                                        </form>');
 }
 
 ?>
