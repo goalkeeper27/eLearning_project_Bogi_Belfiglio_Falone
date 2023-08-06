@@ -4,32 +4,70 @@
             <div class="col-lg-8">
                 <div class="section-title text-center position-relative mb-5" id="anchor">
                     <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Our Courses</h6>
-                    <h1 class="display-4">Discover all our courses</h1>
+                    <[title_courses]>
+                    <!--<h1 class="display-4">Discover all our courses</h1>-->
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!--
+            <div class="row px-2">
             <[foreach]>
-                <div class="col-lg-4 col-md-6 pb-4">
-                    <[course_image]>
+            <div class="col-lg-4 py-2">
+                <div class="owl-carousel course-carousel">
+                    <div class="courses-item position-relative">
+                    <[category_image]>
                         <div class="courses-text">
                             <h4 class="text-center text-white px-3">
-                                <[course_title]>
+                                <[category_title]>
                             </h4>
                             <div class="border-top w-100 mt-3">
-                                <div class="d-flex justify-content-between p-4">
-                                    <span class="text-white"><i class="fa fa-user mr-2"></i>
-                                        <[instructor_course]>
+                                <div class="d-flex justify-content-left py-4 px-2">
+                                    <span class="text-white pr-1"><i class="fa fa-user mr-2" aria-hidden="true"></i>
+                                         Manager:  
                                     </span>
-                                    <span class="text-white"><i class="fa fa-dollar-sign mr-2"></i>
-                                        <[price_course]>
+                                    <span class="text-white">
+                                        <[category_manager]>
                                     </span>
                                 </div>
                             </div>
+                            <div class="w-100 bg-white text-center p-4">
+                                <[category_detail]>
+                            </div>
                         </div>
-                        <[tag_closure]>
+                    </div>
                 </div>
-                <[/foreach]>
+            </div>
+            <[/foreach]>
+        </div>
+        -->
+        <div class="row px-2">
+            <[foreach]>
+                <div class="col-lg-4 py-2">
+                    <div class="owl-carousel course-carousel">
+                        <div class="courses-item position-relative">
+                            <[course_image]>
+                            <div class="courses-text">
+                                <h4 class="text-center text-white px-3">
+                                    <[course_title]>
+                                </h4>
+                                <div class="border-top w-100 mt-3">
+                                    <div class="d-flex justify-content-between py-4 px-3">
+                                        <span class="text-white pr-1"><i class="fa fa-user mr-2" aria-hidden="true"></i>
+                                            <[instructor_course]>
+                                        </span>
+                                        <span class="text-white"><i class="fa fa-dollar-sign mr-2"></i>
+                                            <[price_course]>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="w-100 bg-white text-center p-4">
+                                    <[course_detail]>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <[/foreach]>
         </div>
         <div class="col-12">
             <nav aria-label="Page navigation">
