@@ -33,9 +33,9 @@ $lectures = $mysql->query("SELECT COUNT(*) as lezioni FROM Lezione L INNER JOIN 
 $row = $lectures->fetch_assoc();
 $body->setContent('lectures', $row['lezioni']);
 
-$popular_categories = $mysql->query("SELECT C.nome, count(*) numero from categoria C INNER JOIN corso CS ON CS.ID_categoria = C.ID group by C.nome order by numero desc limit 5");
+$popular_categories = $mysql->query("SELECT C.nome, C.ID, count(*) numero from categoria C INNER JOIN corso CS ON CS.ID_categoria = C.ID group by C.nome order by numero desc limit 5");
 while ($row = $popular_categories->fetch_assoc()) {
-    $body->setContent("category", $row["nome"]);
+    $body->setContent("category", '<form id="'.$row["ID"].'" method="POST" action="courses.php"><input type="hidden" name="id_category" value="'.$row["ID"].'" /><a href="#" onclick="submitCourseDetail('. $row["ID"] .')" class="text-decoration-none h6 m-0">'.$row["nome"].'</a></form>');
     $body->setContent("courses", $row["numero"]);
 }
 
