@@ -10099,3 +10099,13 @@ h6,
   cursor: pointer;
   font-size:18px;
 }
+
+.info-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.description {
+  line-height: 1.6;
+}

@@ -89,6 +89,12 @@ $istruttori = $mysql->query("SELECT IST.*, I.titolo as alt, I.file as immagine F
 while ($row = $istruttori->fetch_assoc()) {
     $body->setContent("name", $row["nome"]." ".$row["cognome"]);
     $body->setContent("profession", $row["professione"]);
+    $body->setContent("instructor_button", '<form id="instructor_'.$row["ID"].'" method="POST" action="instructor.php">
+                                                <input type="hidden" name="id_instructor"  value="'.$row["ID"].'" />
+                                                <a class="btn btn-primary" href="#" onclick="submitCourseDetail(\'instructor_'. $row["ID"] .'\')">
+                                                    See more
+                                                </a>
+                                            </form>');
     $body->setContent('instructor_image', '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($row["immagine"]) . '" alt="'. $row["alt"] .'">');
 }
 
