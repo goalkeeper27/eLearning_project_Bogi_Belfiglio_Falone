@@ -1,4 +1,5 @@
 <?php
+
 $id_corso = $_POST['id_course'];
 
 $body = new Template("skins/revision/dtml/course/body_course.html");

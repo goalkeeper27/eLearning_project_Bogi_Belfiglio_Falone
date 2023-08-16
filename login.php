@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             $data = $result->fetch_assoc();
+            $_SESSION['auth']['ID'] = $data['ID'];
             $_SESSION['auth']['username'] = $data['username'];
             $_SESSION['auth']['password'] = $data['password'];
             header("Location: index.php");

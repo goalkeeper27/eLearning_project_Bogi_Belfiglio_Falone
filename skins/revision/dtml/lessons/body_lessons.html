@@ -1,0 +1,48 @@
+<!-- Detail Start -->
+<div class="container-fluid">
+    <div class="row" id="anchor">
+        <div class="col-lg-10 mb-5 mb-lg-0">
+            <div class="position-relative">
+                <h1 class="display-4 pb-3">
+                    Lessons of "<[course_name]>"
+                </h1>
+                <p>
+                    Followed lessons: <[followed_lessons]>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7 mt-3 mb-lg-0">
+            <div class="col-lg-12" style="padding:0">
+                <[foreach]>
+                    <div class="d-flex-notification pb-3 mb-3">
+                        <div class="btn-icon bg-primary mr-4">
+                            <[desk]>
+                        </div>
+                        <div class="mt-n1" style="width:100%">
+                            <h4>
+                                Lesson number <[number_lesson]>
+                            </h4>
+                            <p>
+                                <[title_lesson]>
+                            </p>
+                        </div>
+                        <[init_form]>
+                        <[inputs]>
+                        <[submit]>
+                        <[end_form]>
+                        
+                    </div>
+                    <[/foreach]>
+            </div>
+            </div>
+
+            <div id="course_operations" class="col-lg-5 mt-3 mb-lg-0">
+                <[course_operations]>
+            </div>
+
+    </div>
+    
+</div>

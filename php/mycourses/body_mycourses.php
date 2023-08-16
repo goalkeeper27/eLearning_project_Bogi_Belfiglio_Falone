@@ -8,6 +8,10 @@ if (isset($_POST['index'])) {
     $index = 1;
 }
 
+if(isset($_SESSION['auth']['course']) && isset($_SESSION['auth']['enrollment'])){
+    unset($_SESSION['auth']['course']);
+    unset($_SESSION['auth']['enrollment']);
+}
 
 $body = new Template("skins/revision/dtml/mycourses/body_mycourses.html");
 
@@ -140,7 +144,7 @@ $min = 8 * $index - 8; //Se index è 1 il min deve essere 1 e il max deve essere
 
 
 $my_courses = $mysql->query("SELECT C.*, SIC.ID as iscrizione FROM corso C INNER JOIN storico_iscrizioni_corso SIC ON C.ID = SIC.ID_corso
-    INNER JOIN utente U ON U.ID = SIC.ID_utente WHERE U.username = '" . $user . "' LIMIT $min, 2");
+    INNER JOIN utente U ON U.ID = SIC.ID_utente WHERE U.username = '" . $user . "' LIMIT $min, 8");
 
 while ($row = $my_courses->fetch_assoc()) {
     $id_course = $row['ID'];
@@ -163,8 +167,9 @@ while ($row = $my_courses->fetch_assoc()) {
     $body->setContent("instructor", $result_course["nome_istruttore"] . " " . $result_course["cognome_istruttore"]);
     $body->setContent('course_image', '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($result_course["immagine"]) . '" alt="' . $result_course["alt"] . '">');
     $body->setContent("lessons", $lessons_done.'/'.$total_lessons);
-    $body->setContent('mycourse_detail', '<form id="' . $id_enrollment . '" method="POST" action="course.php">
-                                            <input type="hidden" name="id_course" value="' . $id_enrollment . '" />
+    $body->setContent('mycourse_detail', '<form id="' . $id_enrollment . '" method="POST" action="lessons.php">
+                                            <input type="hidden" name="id_enrollment" value="' . $id_enrollment . '" />
+                                            <input type="hidden" name="id_course" value="' . $id_course . '" />
                                             <a class="btn btn-primary" href="#" onclick="submitCourseDetail(' . $id_enrollment . ')">
                                                 Continue
                                             </a>
