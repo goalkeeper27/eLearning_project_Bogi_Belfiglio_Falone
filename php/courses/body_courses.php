@@ -189,10 +189,20 @@ if(isset($_POST['id_category'])){
     $name_category = $mysql->query("SELECT * FROM Categoria WHERE ID = $id_category");
     $result_category = $name_category->fetch_assoc();
     $body->setContent('title_courses','<h1 class="display-4">Courses in category: "'.$result_category["nome"].'"</h1>');
-    $courses = $mysql->query("SELECT C.* FROM corso C INNER JOIN Categoria Cat ON C.ID_categoria = Cat.ID WHERE C.ID_categoria = $id_category LIMIT $min, 6");
+    if(isset($_SESSION["auth"]["ID"])){
+        $courses = $mysql->query("SELECT C.* FROM corso C INNER JOIN Categoria Cat ON C.ID_categoria = Cat.ID WHERE C.ID_categoria = $id_category AND C.ID NOT IN ( 
+            SELECT ID_corso FROM storico_iscrizioni_corso WHERE ID_utente = {$_SESSION['auth']['ID']}) LIMIT $min, 6");
+    }else{
+        $courses = $mysql->query("SELECT C.* FROM corso C INNER JOIN Categoria Cat ON C.ID_categoria = Cat.ID WHERE C.ID_categoria = $id_category LIMIT $min, 6");
+    }
 }else{
     $body->setContent('title_courses','<h1 class="display-4">Discover all our courses</h1>');
-    $courses = $mysql->query("SELECT * FROM corso LIMIT $min, 6");
+    if(isset($_SESSION["auth"]["ID"])){ 
+        $courses = $mysql->query("SELECT * FROM corso WHERE ID NOT IN ( SELECT ID_corso FROM storico_iscrizioni_corso WHERE ID_utente = {$_SESSION['auth']['ID']}) LIMIT $min, 6");
+    }else{
+        $courses = $mysql->query("SELECT * FROM corso LIMIT $min, 6");
+    }
+    
 }
 while($row = $courses->fetch_assoc()){
     $id = $row['ID'];
