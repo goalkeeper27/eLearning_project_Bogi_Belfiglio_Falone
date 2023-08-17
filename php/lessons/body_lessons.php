@@ -35,7 +35,6 @@ $body->setContent("followed_lessons", $total_followed_lessons);
 
 if($total_lessons == $total_followed_lessons){
     require "course_operations.php";
-    echo "AHAHAHAHAH";
     $body->setContent("course_operations", $course_operations->get());
 }
 

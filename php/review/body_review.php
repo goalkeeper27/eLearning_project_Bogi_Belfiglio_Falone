@@ -10,8 +10,13 @@ if (isset($_POST['rating']) && isset($_POST['message'])) {
     #definiamo l'header della pagina del corso specifico
     $body = new Template("skins/revision/dtml/review/body_review.html");
 
-}
+    $id_course = $_SESSION['auth']['course'];
+    $course_title = $mysql->query("SELECT nome FROM corso WHERE ID = $id_course");
+    if($row = $course_title->fetch_assoc()){
+        $body->setContent('lesson_title',$row['nome']);
+    }
 
+}
 
 
 

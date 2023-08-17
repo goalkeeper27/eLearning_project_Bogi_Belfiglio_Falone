@@ -98,14 +98,89 @@ while ($row = $istruttori->fetch_assoc()) {
     $body->setContent('instructor_image', '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($row["immagine"]) . '" alt="'. $row["alt"] .'">');
 }
 
+$recensioni = $mysql->query("SELECT R.*, C.nome as course_name, U.nome as student_name, U.cognome as student_surname FROM recensione R INNER JOIN storico_iscrizioni_corso ST ON R.ID_iscrizione = ST.ID INNER JOIN utente U ON ST.ID_utente = U.ID INNER JOIN corso C ON ST.ID_corso = C.ID");
 
+while($row = $recensioni->fetch_assoc()){
+    if($row["voto"] == 1){
+        $body->setContent("stars", '<div class="rating pl-1">
+        <div class="form-group">
+            <input type="radio" name="rating" id="star5" value="5" disabled>
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4" disabled>
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3" disabled>
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2" disabled>
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1" disabled checked>
+            <label for="star1">&#9733;</label>
+        </div>
+        </div>');
+    } elseif ($row["voto"] == 2) {
+        $body->setContent("stars", '<div class="rating pl-1">
+        <div class="form-group">
+            <input type="radio" name="rating" id="star5" value="5" disabled>
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4" disabled>
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3" disabled>
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2" disabled checked>
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1" disabled>
+            <label for="star1">&#9733;</label>
+        </div>
+        </div>');
+    } elseif ($row["voto"] == 3) {
+        $body->setContent("stars", '<div class="rating pl-1">
+        <div class="form-group">
+            <input type="radio" name="rating" id="star5" value="5" disabled>
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4" disabled>
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3" disabled checked>
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2" disabled>
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1" disabled>
+            <label for="star1">&#9733;</label>
+        </div>
+        </div>');
+    } elseif ($row["voto"] == 4) {
+        $body->setContent("stars", '<div class="rating pl-1">
+        <div class="form-group">
+            <input type="radio" name="rating" id="star5" value="5" disabled>
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4" disabled checked>
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3" disabled>
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2" disabled>
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1" disabled>
+            <label for="star1">&#9733;</label>
+        </div>
+        </div>');
+    } elseif ($row["voto"] == 5) {
+        $body->setContent("stars", '<div class="rating pl-1">
+        <div class="form-group">
+            <input type="radio" name="rating" id="star5" value="5" disabled checked>
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4" disabled>
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3" disabled>
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2" disabled>
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1" disabled>
+            <label for="star1">&#9733;</label>
+        </div>
+        </div>');
+    }
 
-
-
-
-
-
-
-
+    $body->setContent("review_body", $row["corpo"]);
+    $body->setContent("student_name", $row["student_name"].' '.$row["student_surname"]);
+    $body->setContent("course_name", $row["course_name"]);
+}
 
 ?>
