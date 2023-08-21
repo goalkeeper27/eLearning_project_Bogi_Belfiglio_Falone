@@ -4976,6 +4976,19 @@ input[type="button"].btn-block {
   color: #fff;
 }
 
+.card_contact{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 400px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: false;
+}
+
 .card {
   position: relative;
   display: flex;
