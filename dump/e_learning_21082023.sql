@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 05, 2023 alle 11:51
+-- Creato il: Ago 21, 2023 alle 12:18
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -113,6 +113,14 @@ CREATE TABLE `domanda` (
   `corpo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `domanda`
+--
+
+INSERT INTO `domanda` (`ID`, `ID_esercitazione`, `corpo`) VALUES
+(1, 1, 'What kind of language is python?'),
+(2, 1, 'You have to check if the value of a variable \"a\" is greater or equal than 10, the correct form for an if construct is: ');
+
 -- --------------------------------------------------------
 
 --
@@ -122,9 +130,15 @@ CREATE TABLE `domanda` (
 CREATE TABLE `esercitazione` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_corso` int(11) UNSIGNED NOT NULL,
-  `numero` int(11) NOT NULL,
   `punteggio_totale` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `esercitazione`
+--
+
+INSERT INTO `esercitazione` (`ID`, `ID_corso`, `punteggio_totale`) VALUES
+(1, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -209,9 +223,18 @@ CREATE TABLE `lezione` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_corso` int(10) UNSIGNED NOT NULL,
   `numero` int(11) NOT NULL,
-  `titolo` varchar(20) NOT NULL,
-  `descrizione` text NOT NULL
+  `titolo` varchar(100) NOT NULL,
+  `descrizione` text NOT NULL,
+  `video` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `lezione`
+--
+
+INSERT INTO `lezione` (`ID`, `ID_corso`, `numero`, `titolo`, `descrizione`, `video`) VALUES
+(1, 1, 1, 'foundation of python programming', 'Delve into the foundations of Python programming with this lesson. Learn about variables, the building blocks of data storage, and understand how to manipulate strings and numbers. Explore the concept of conditional statements to make your programs react dynamically to different inputs. By the end of this lesson, you\'ll have written your first interactive Python programs.', 'uploads/video1.mp4'),
+(2, 1, 2, 'resuable blocks of code and use of data structures', '\"In this lesson, we\'ll explore more advanced aspects of Python programming. Understand the power of functions as reusable blocks of code, and learn how to create and use them effectively. Dive into complex data structures like lists and dictionaries, and discover the versatility they bring to managing information. By the end of this lesson, you\'ll be equipped with valuable skills for tackling real-world programming challenges.', 'uploads/video2.mp4');
 
 -- --------------------------------------------------------
 
@@ -235,51 +258,32 @@ CREATE TABLE `notifica` (
 --
 
 INSERT INTO `notifica` (`ID`, `ID_utente`, `mittente`, `data`, `ora`, `oggetto`, `corpo`, `visto`) VALUES
-(1, 1, 'E-LEARNING FBB COMMUNITY', '2023-08-03', '18:57:17', 'prova', 'prova della prova per provare', 1),
-(2, 1, 'Utente2', '2023-08-03', '12:30:00', 'Nuovo messaggio', 'Hai ricevuto un nuovo messaggio.', 1),
-(3, 1, 'Amministratore', '2023-08-04', '10:15:00', 'Aggiornamenti', 'Ci saranno degli aggiornamenti di sistema il prossimo fine settimana.', 1),
-(4, 1, 'Utente3', '2023-08-05', '16:45:00', 'Invito a un corso', 'Sei stato invitato a partecipare a un corso sullo sviluppo web.', 1),
-(5, 1, 'Amministratore', '2023-08-06', '09:00:00', 'Riavvio del server', 'Il server sarà riavviato per manutenzione tra 30 minuti.', 1),
-(6, 1, 'Utente4', '2023-08-07', '14:20:00', 'Nuovo post nel forum', 'Un utente ha pubblicato un nuovo post nel forum.', 1),
-(7, 1, 'Amministratore', '2023-08-08', '11:30:00', 'Aggiornamento password', 'Si prega di aggiornare la password per motivi di sicurezza.', 1),
-(8, 1, 'John Doe', '2023-08-03', '09:00:00', 'New Message', 'You have a new message.', 0),
-(9, 1, 'Alice Smith', '2023-08-04', '10:30:00', 'Important Update', 'Please review the latest updates.', 1),
-(10, 1, 'Jane Johnson', '2023-08-05', '15:45:00', 'Event Invitation', 'You are invited to the upcoming event.', 1),
-(11, 1, 'Mark Brown', '2023-08-06', '11:15:00', 'Meeting Reminder', 'Don\'t forget about our meeting tomorrow.', 0),
-(12, 1, 'Emily Wilson', '2023-08-07', '08:30:00', 'Report Submission', 'Please submit your report by the deadline.', 1),
-(13, 1, 'Michael Davis', '2023-08-08', '14:00:00', 'Feedback Request', 'We would like your feedback on our services.', 0),
-(14, 1, 'Sarah White', '2023-08-09', '17:20:00', 'New Feature Announcement', 'Exciting new features are now available.', 0),
-(15, 1, 'Daniel Lee', '2023-08-10', '09:45:00', 'Vacation Notice', 'I will be on vacation next week.', 0),
-(16, 1, 'Olivia Miller', '2023-08-11', '13:30:00', 'Training Session', 'Training session scheduled for next Monday.', 1),
-(17, 1, 'Robert Johnson', '2023-08-12', '16:15:00', 'Project Update', 'Here\'s the latest update on the project.', 0),
-(18, 1, 'Sophia Anderson', '2023-08-13', '10:00:00', 'New Announcement', 'Check out our latest company announcement.', 0),
-(19, 1, 'William Martinez', '2023-08-14', '11:30:00', 'Upcoming Maintenance', 'Maintenance is scheduled for next weekend.', 0),
-(20, 1, 'Ava Jackson', '2023-08-15', '14:45:00', 'Team Building Event', 'Join us for a team-building event.', 1),
-(21, 1, 'James Taylor', '2023-08-16', '10:45:00', 'Product Launch', 'Our new product is now available!', 0),
-(22, 1, 'Emma Hernandez', '2023-08-17', '12:00:00', 'Webinar Invitation', 'Don\'t miss our upcoming webinar.', 0),
-(23, 1, 'Liam Brown', '2023-08-18', '09:30:00', 'Task Reminder', 'Remember to complete your assigned task.', 1),
-(24, 1, 'Mia Davis', '2023-08-19', '15:15:00', 'Holiday Schedule', 'View the holiday schedule for this year.', 0),
-(25, 1, 'Benjamin Martinez', '2023-08-20', '13:00:00', 'Feedback Submission', 'Submit your feedback by the end of the week.', 0),
-(26, 1, 'Sophie Brown', '2023-08-21', '14:30:00', 'New Opportunity', 'Exciting new opportunities await!', 0),
-(27, 1, 'Lucas Wilson', '2023-08-22', '11:45:00', 'Task Assignment', 'You\'ve been assigned a new task.', 1),
-(28, 1, 'Chloe Davis', '2023-08-23', '09:15:00', 'Product Update', 'Our product has been updated with new features.', 0),
-(29, 1, 'Ethan Smith', '2023-08-24', '15:00:00', 'Meeting Invitation', 'You are invited to a meeting next week.', 0),
-(30, 1, 'Grace Johnson', '2023-08-25', '10:30:00', 'Report Review', 'Please review the latest report.', 1),
-(31, 1, 'Logan Martinez', '2023-08-26', '12:45:00', 'Project Status', 'Check the current status of the project.', 0),
-(32, 1, 'Avery Taylor', '2023-08-27', '14:00:00', 'Training Announcement', 'New training sessions are available.', 0),
-(33, 1, 'Abigail Miller', '2023-08-28', '11:00:00', 'Upcoming Event', 'Don\'t miss our upcoming event.', 1),
-(34, 1, 'Jackson Anderson', '2023-08-29', '09:30:00', 'Holiday Notice', 'View the upcoming holiday schedule.', 0),
-(35, 1, 'Scarlett Wilson', '2023-08-30', '13:15:00', 'Product Demo', 'Join us for a product demo session.', 0),
-(36, 1, 'Liam Johnson', '2023-08-31', '16:45:00', 'Feedback Collection', 'We value your feedback. Share your thoughts!', 0),
-(37, 1, 'Zoe Brown', '2023-09-01', '10:15:00', 'New Task List', 'Check out the updated task list.', 1),
-(38, 1, 'Aiden Davis', '2023-09-02', '14:30:00', 'Important Announcement', 'An important announcement awaits you.', 0),
-(39, 1, 'Mia Taylor', '2023-09-03', '09:45:00', 'Workshop Registration', 'Register for our upcoming workshop.', 0),
-(40, 1, 'Sebastian Martinez', '2023-09-04', '11:00:00', 'Monthly Report', 'Submit your monthly report by the deadline.', 1),
-(41, 1, 'Lily Johnson', '2023-09-05', '15:30:00', 'Training Feedback', 'Share your feedback about the recent training.', 0),
-(42, 1, 'Carter Smith', '2023-09-06', '10:45:00', 'New Assignment', 'You\'ve been assigned a new task.', 0),
-(43, 1, 'Grace Martinez', '2023-09-07', '13:00:00', 'Team Building Event', 'Join us for a team-building event.', 1),
-(44, 1, 'Oliver Taylor', '2023-09-08', '16:15:00', 'Product Launch', 'Our new product is now available!', 0),
-(45, 1, 'Ella Johnson', '2023-09-09', '09:30:00', 'Webinar Invitation', 'Don\'t miss our upcoming webinar.', 1);
+(1, 1, 'E-LEARNING FBB COMMUNITY', '2023-08-05', '17:37:04', 'prova', 'prova della prova per provare', 1),
+(2, 1, 'Utente2', '2023-08-05', '17:37:04', 'Nuovo messaggio', 'Hai ricevuto un nuovo messaggio.', 1),
+(3, 1, 'Amministratore', '2023-08-05', '17:37:04', 'Aggiornamenti', 'Ci saranno degli aggiornamenti di sistema il prossimo fine settimana.', 1),
+(4, 1, 'Utente3', '2023-08-05', '17:39:38', 'Invito a un corso', 'Sei stato invitato a partecipare a un corso sullo sviluppo web.', 1),
+(6, 1, 'Utente4', '2023-08-05', '17:39:38', 'Nuovo post nel forum', 'Un utente ha pubblicato un nuovo post nel forum.', 1),
+(8, 1, 'John Doe', '2023-08-05', '17:39:38', 'New Message', 'You have a new message.', 1),
+(9, 1, 'Alice Smith', '2023-08-05', '17:39:38', 'Important Update', 'Please review the latest updates.', 1),
+(10, 1, 'Jane Johnson', '2023-08-05', '17:39:38', 'Event Invitation', 'You are invited to the upcoming event.', 1),
+(11, 1, 'Mark Brown', '2023-08-05', '17:39:38', 'Meeting Reminder', 'Don\'t forget about our meeting tomorrow.', 1),
+(12, 1, 'Emily Wilson', '2023-08-05', '17:39:38', 'Report Submission', 'Please submit your report by the deadline.', 1),
+(16, 1, 'Olivia Miller', '2023-08-05', '17:39:38', 'Training Session', 'Training session scheduled for next Monday.', 1),
+(49, 1, 'amico@email.com', '2023-08-05', '14:30:00', 'Meeting domani', 'Ciao! Abbiamo un meeting importante domani alle 10. Non mancare!', 1),
+(50, 1, 'offerta@negozio.com', '2023-08-04', '09:15:00', 'Offerta Speciale', 'Caro cliente, abbiamo una fantastica offerta per te! Approfittane ora.', 1),
+(51, 1, 'supporto@servizio.com', '2023-08-03', '16:45:00', 'Assistenza Tecnica', 'Ciao, il nostro team di supporto è disponibile per aiutarti con qualsiasi problema tu abbia riscontrato.', 1),
+(53, 1, 'newsletter@azienda.com', '2023-08-01', '14:00:00', 'Novità sul nostro prodotto', 'Siamo entusiasti di presentarti le nuove funzionalità del nostro prodotto. Scoprile adesso!', 1),
+(54, 1, 'promozione@ristorante.com', '2023-07-31', '19:30:00', 'Serata speciale al ristorante', 'Ti invitiamo a partecipare alla serata di degustazione nel nostro ristorante. Prenota il tuo tavolo ora!', 1),
+(55, 1, 'collega@email.com', '2023-07-30', '12:45:00', 'Aggiornamento progetto', 'Ciao, ho alcune nuove idee da discutere riguardo al nostro progetto. Possiamo incontrarci oggi?', 1),
+(58, 1, 'evento@città.com', '2023-07-27', '11:10:00', 'Evento culturale in città', 'Ciao, ti segnaliamo un affascinante evento culturale in città questo fine settimana. Non perdertelo!', 1),
+(63, 1, 'amico@email.com', '2023-07-22', '17:15:00', 'Video divertente', 'Ehi! Ho trovato un video che ti farà ridere. Dai un\'occhiata quando hai tempo!', 1),
+(65, 1, 'FBB Community', '2023-08-05', '18:54:40', 'enrollment in the course \"FUNDAMENTALS OF PYTHON PROGRAMMING\"', 'Hi albebog Your enrollment in the \"FUNDAMENTALS OF PYTHON PROGRAMMING\" course has been completed successfully. Enjoy the study', 1),
+(66, 1, 'FBB Community', '2023-08-05', '19:10:07', 'enrollment in the course \"PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS\"', 'Hi albebog Your enrollment in the \"PHOTOGRAPHY ESSENTIALS: MASTERING THE ART OF CAPTURING MOMENTS\" course has been completed successfully. Enjoy the study', 1),
+(67, 1, 'FBB Community', '2023-08-05', '19:13:40', 'Enrollment in the course \"GRAPHIC DESIGN FUNDAMENTALS\"', 'Hi albebog . \n Your enrollment in the \"GRAPHIC DESIGN FUNDAMENTALS\" course has been completed successfully. \n Enjoy the study', 1),
+(68, 1, 'FBB Community', '2023-08-05', '19:27:43', 'Enrollment in the course \"FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH\"', 'Hi albebog . \n Your enrollment in the \"FULL STACK WEB DEVELOPMENT: BUILDING DYNAMIC WEBSITE FROM SCRATCH\" course has been completed successfully. \n Enjoy the study', 1),
+(69, 2, 'FBB Community', '2023-08-10', '16:03:08', 'Enrollment in the course \"FUNDAMENTALS OF PYTHON PROGRAMMING\"', 'Hi stefbel . \n Your enrollment in the \"FUNDAMENTALS OF PYTHON PROGRAMMING\" course has been completed successfully. \n Enjoy the study', 1),
+(70, 1, 'FBB Community', '2023-08-16', '12:55:28', 'Enrollment in the course \"GRAPHIC DESIGN FUNDAMENTALS\"', 'Hi albebog . \n Your enrollment in the \"GRAPHIC DESIGN FUNDAMENTALS\" course has been completed successfully. \n Enjoy the study', 1),
+(71, 1, 'FBB Community', '2023-08-16', '12:55:51', 'Enrollment in the course \"MASTERING DIGITAL MARKETING STRATEGIES\"', 'Hi albebog . \n Your enrollment in the \"MASTERING DIGITAL MARKETING STRATEGIES\" course has been completed successfully. \n Enjoy the study', 1);
 
 -- --------------------------------------------------------
 
@@ -295,6 +299,13 @@ CREATE TABLE `recensione` (
   `voto` int(10) UNSIGNED NOT NULL,
   `corpo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `recensione`
+--
+
+INSERT INTO `recensione` (`ID`, `ID_iscrizione`, `data`, `ora`, `voto`, `corpo`) VALUES
+(2, 7, '2023-08-21', '10:41:44', 3, 'buono dai');
 
 --
 -- Trigger `recensione`
@@ -340,9 +351,23 @@ INSERT INTO `responsabile` (`ID`, `nome`, `cognome`, `email`) VALUES
 CREATE TABLE `risposta` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_domanda` int(11) UNSIGNED NOT NULL,
-  `corpo` int(11) NOT NULL,
+  `corpo` text NOT NULL,
   `stato` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `risposta`
+--
+
+INSERT INTO `risposta` (`ID`, `ID_domanda`, `corpo`, `stato`) VALUES
+(1, 1, 'Object', 1),
+(2, 1, 'Scripting', 0),
+(3, 1, 'Markup', 0),
+(4, 1, 'Low level', 0),
+(5, 2, 'a \"greater or equal\" 10', 0),
+(6, 2, 'a >>= 10', 0),
+(7, 2, 'a >= 10', 1),
+(8, 2, 'a > or = 10', 0);
 
 -- --------------------------------------------------------
 
@@ -371,6 +396,18 @@ CREATE TABLE `storico_iscrizioni_corso` (
   `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `storico_iscrizioni_corso`
+--
+
+INSERT INTO `storico_iscrizioni_corso` (`ID`, `ID_utente`, `ID_corso`, `data`) VALUES
+(7, 1, 1, '2023-08-05'),
+(8, 1, 4, '2023-08-05'),
+(10, 1, 5, '2023-08-05'),
+(11, 2, 1, '2023-08-10'),
+(12, 1, 2, '2023-08-16'),
+(13, 1, 6, '2023-08-16');
+
 -- --------------------------------------------------------
 
 --
@@ -382,6 +419,26 @@ CREATE TABLE `storico_lezioni_corso` (
   `ID_lezione` int(11) UNSIGNED NOT NULL,
   `ID_iscrizione` int(11) UNSIGNED NOT NULL,
   `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `storico_lezioni_corso`
+--
+
+INSERT INTO `storico_lezioni_corso` (`ID`, `ID_lezione`, `ID_iscrizione`, `data`) VALUES
+(8, 1, 7, '2023-08-16'),
+(10, 2, 7, '2023-08-16');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `storico_video_lezioni`
+--
+
+CREATE TABLE `storico_video_lezioni` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `ID_iscrizione` int(10) UNSIGNED NOT NULL,
+  `ID_video` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -408,7 +465,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`ID`, `ID_lezione`, `nome`, `cognome`, `data`, `citta`, `codice_fiscale`, `username`, `email`, `password`) VALUES
-(1, 0, 'alberto', 'bogi', '2001-12-27', 'chieti', 'bgolrt01t27a515n', 'albebog', 'albertobogi01@gmail.com', '177dacb14b34103960ec27ba29bd686b');
+(1, 0, 'alberto', 'bogi', '2001-12-27', 'chieti', 'bgolrt01t27a515n', 'albebog', 'albertobogi01@gmail.com', '177dacb14b34103960ec27ba29bd686b'),
+(2, 0, 'stefano', 'belfiglio', '2001-01-13', 'Chieti', 'xxxxxxxxxxxxxxxx', 'stefbel', 'stefano.belfiglio@gmail.com', 'ec515be7d576d0669b91eae4a438744c');
 
 -- --------------------------------------------------------
 
@@ -420,8 +478,15 @@ CREATE TABLE `video` (
   `ID` int(10) UNSIGNED NOT NULL,
   `ID_lezione` int(11) UNSIGNED NOT NULL,
   `titolo` varchar(20) NOT NULL,
-  `file` blob NOT NULL
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `video`
+--
+
+INSERT INTO `video` (`ID`, `ID_lezione`, `titolo`, `file`) VALUES
+(1, 1, 'video1', 'uploads/video1.mp4');
 
 --
 -- Indici per le tabelle scaricate
@@ -544,6 +609,14 @@ ALTER TABLE `storico_lezioni_corso`
   ADD KEY `lezione_for_storico_lezioni` (`ID_lezione`);
 
 --
+-- Indici per le tabelle `storico_video_lezioni`
+--
+ALTER TABLE `storico_video_lezioni`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `iscrizione_for_storico_video` (`ID_iscrizione`),
+  ADD KEY `video_for_storico_video` (`ID_video`);
+
+--
 -- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
@@ -588,13 +661,13 @@ ALTER TABLE `corso`
 -- AUTO_INCREMENT per la tabella `domanda`
 --
 ALTER TABLE `domanda`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `esercitazione`
 --
 ALTER TABLE `esercitazione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `immagine`
@@ -612,19 +685,19 @@ ALTER TABLE `istruttore`
 -- AUTO_INCREMENT per la tabella `lezione`
 --
 ALTER TABLE `lezione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `notifica`
 --
 ALTER TABLE `notifica`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT per la tabella `recensione`
 --
 ALTER TABLE `recensione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `responsabile`
@@ -636,7 +709,7 @@ ALTER TABLE `responsabile`
 -- AUTO_INCREMENT per la tabella `risposta`
 --
 ALTER TABLE `risposta`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `storico_esercitazioni_corso`
@@ -648,25 +721,31 @@ ALTER TABLE `storico_esercitazioni_corso`
 -- AUTO_INCREMENT per la tabella `storico_iscrizioni_corso`
 --
 ALTER TABLE `storico_iscrizioni_corso`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT per la tabella `storico_lezioni_corso`
 --
 ALTER TABLE `storico_lezioni_corso`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `storico_video_lezioni`
+--
+ALTER TABLE `storico_video_lezioni`
   MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `video`
 --
 ALTER TABLE `video`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Limiti per le tabelle scaricate
@@ -761,6 +840,13 @@ ALTER TABLE `storico_iscrizioni_corso`
 ALTER TABLE `storico_lezioni_corso`
   ADD CONSTRAINT `iscrizione_for_storico_lezioni` FOREIGN KEY (`ID_iscrizione`) REFERENCES `storico_iscrizioni_corso` (`ID`),
   ADD CONSTRAINT `lezione_for_storico_lezioni` FOREIGN KEY (`ID_lezione`) REFERENCES `lezione` (`ID`);
+
+--
+-- Limiti per la tabella `storico_video_lezioni`
+--
+ALTER TABLE `storico_video_lezioni`
+  ADD CONSTRAINT `iscrizione_for_storico_video` FOREIGN KEY (`ID_iscrizione`) REFERENCES `storico_iscrizioni_corso` (`ID`),
+  ADD CONSTRAINT `video_for_storico_video` FOREIGN KEY (`ID_video`) REFERENCES `video` (`ID`);
 
 --
 -- Limiti per la tabella `video`

@@ -102,79 +102,50 @@ $recensioni = $mysql->query("SELECT R.*, C.nome as course_name, U.nome as studen
 
 while($row = $recensioni->fetch_assoc()){
     if($row["voto"] == 1){
-        $body->setContent("stars", '<div class="rating pl-1">
+        $body->setContent("stars", '
         <div class="form-group">
-            <input type="radio" name="rating" id="star5" value="5" disabled>
-            <label for="star5">&#9733;</label>
-            <input type="radio" name="rating" id="star4" value="4" disabled>
-            <label for="star4">&#9733;</label>
-            <input type="radio" name="rating" id="star3" value="3" disabled>
-            <label for="star3">&#9733;</label>
-            <input type="radio" name="rating" id="star2" value="2" disabled>
-            <label for="star2">&#9733;</label>
-            <input type="radio" name="rating" id="star1" value="1" disabled checked>
-            <label for="star1">&#9733;</label>
-        </div>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
         </div>');
     } elseif ($row["voto"] == 2) {
-        $body->setContent("stars", '<div class="rating pl-1">
+        $body->setContent("stars", '
         <div class="form-group">
-            <input type="radio" name="rating" id="star5" value="5" disabled>
-            <label for="star5">&#9733;</label>
-            <input type="radio" name="rating" id="star4" value="4" disabled>
-            <label for="star4">&#9733;</label>
-            <input type="radio" name="rating" id="star3" value="3" disabled>
-            <label for="star3">&#9733;</label>
-            <input type="radio" name="rating" id="star2" value="2" disabled checked>
-            <label for="star2">&#9733;</label>
-            <input type="radio" name="rating" id="star1" value="1" disabled>
-            <label for="star1">&#9733;</label>
-        </div>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
         </div>');
     } elseif ($row["voto"] == 3) {
-        $body->setContent("stars", '<div class="rating pl-1">
+        $body->setContent("stars", '
         <div class="form-group">
-            <input type="radio" name="rating" id="star5" value="5" disabled>
-            <label for="star5">&#9733;</label>
-            <input type="radio" name="rating" id="star4" value="4" disabled>
-            <label for="star4">&#9733;</label>
-            <input type="radio" name="rating" id="star3" value="3" disabled checked>
-            <label for="star3">&#9733;</label>
-            <input type="radio" name="rating" id="star2" value="2" disabled>
-            <label for="star2">&#9733;</label>
-            <input type="radio" name="rating" id="star1" value="1" disabled>
-            <label for="star1">&#9733;</label>
+            <label>&#9733;</label>
+            <label>&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
         </div>
-        </div>');
+        ');
     } elseif ($row["voto"] == 4) {
-        $body->setContent("stars", '<div class="rating pl-1">
+        $body->setContent("stars", '
         <div class="form-group">
-            <input type="radio" name="rating" id="star5" value="5" disabled>
-            <label for="star5">&#9733;</label>
-            <input type="radio" name="rating" id="star4" value="4" disabled checked>
-            <label for="star4">&#9733;</label>
-            <input type="radio" name="rating" id="star3" value="3" disabled>
-            <label for="star3">&#9733;</label>
-            <input type="radio" name="rating" id="star2" value="2" disabled>
-            <label for="star2">&#9733;</label>
-            <input type="radio" name="rating" id="star1" value="1" disabled>
-            <label for="star1">&#9733;</label>
-        </div>
+            <label>&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
         </div>');
     } elseif ($row["voto"] == 5) {
-        $body->setContent("stars", '<div class="rating pl-1">
+        $body->setContent("stars", '
         <div class="form-group">
-            <input type="radio" name="rating" id="star5" value="5" disabled checked>
-            <label for="star5">&#9733;</label>
-            <input type="radio" name="rating" id="star4" value="4" disabled>
-            <label for="star4">&#9733;</label>
-            <input type="radio" name="rating" id="star3" value="3" disabled>
-            <label for="star3">&#9733;</label>
-            <input type="radio" name="rating" id="star2" value="2" disabled>
-            <label for="star2">&#9733;</label>
-            <input type="radio" name="rating" id="star1" value="1" disabled>
-            <label for="star1">&#9733;</label>
-        </div>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
+            <label style="color:#ffdd00">&#9733;</label>
         </div>');
     }
 
