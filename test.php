@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+define('K_TCPDF_THROW_EXCEPTION', true);
+require_once('tcpdf/tcpdf.php');
 require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
