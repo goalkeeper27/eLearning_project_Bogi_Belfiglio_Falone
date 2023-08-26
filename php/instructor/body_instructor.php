@@ -8,9 +8,11 @@ $info_istruttore = $mysql->query("SELECT IST.*, C.nome as nome_corso, I.file as 
 while($row = $info_istruttore->fetch_assoc()){
     $body->setContent('image_instructor','<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($row["immagine"]) . '" alt="'. $row["alt"] .'">');
     $body->setContent('name_and_surname', '<h1>'.$row["nome"].' '.$row["cognome"].'</h1>');
-    $body->setContent('name_course', '<h4>Instructor of: </h4><h3>'.$row["nome_corso"].'</h3>');
+    $body->setContent('born_in', '<p>(Born on: '.$row["data"].' in '.$row["citta"].')</p>');
+    $body->setContent('profession', '<h4>Profession:</h4> <p>'.$row["professione"].'</p>');
+    $body->setContent('name_course', '<h4>Instructor of: </h4><p>'.$row["nome_corso"].'</p>');
     $body->setContent('description', '<p class="mt-4 description">'.$row["descrizione"].'</p>');
-    $body->setContent('instructor_email', '<li>Email: '.$row["email"].'</li>');
+    $body->setContent('instructor_email', '<li>Email: <a href="mailto:'.$row["email"].'">'.$row["email"].'</a></li>');
 }
 
 ?>

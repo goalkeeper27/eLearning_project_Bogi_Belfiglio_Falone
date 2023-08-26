@@ -5058,7 +5058,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0,127,255,0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -11363,6 +11363,30 @@ h6,
 .rating input[type="radio"]:hover ~ label {
   color: #ffdd00;
 }
+
+.custom-container {
+  max-width: 4000px;
+}
+
+.button_update_psw button{
+  width: 30%;
+  padding: 8px;
+  background-color: #4CAF50;
+  border: none;
+  color: #FFF;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.button_update_psw button:enabled{
+  background-color: #008000;
+  cursor: pointer;
+}
+
+#change_psw{
+  display: none;
+}
+
 
 
 

@@ -4,7 +4,9 @@ require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$main = new Template("skins/revision/dtml/registration/registration.html");
+
+if (isset($nome) && isset($cognome) && isset($data_nascita) && isset($citta) && isset($codice_fiscale) && isset($username) && isset($email) && isset($password) && isset($password_ripetuta)) {
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
     $data_nascita = $_POST["data"];
@@ -66,6 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $stmt2->close();
     $stmt3->close();
-
 }
+$main->close();
 ?>
