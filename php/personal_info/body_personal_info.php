@@ -13,11 +13,11 @@ if(isset($_POST["password"]) && isset($_POST["password_ripetuta"])){
         $update_password = $mysql->query("UPDATE utente SET password = '$nuova_password_hash' WHERE username = '$username'");
         $_SESSION['auth']['password'] = $nuova_password;
         $send_notific = $mysql->query("INSERT INTO notifica(ID_utente, mittente, data, ora, oggetto, corpo, visto)
-        values($id_utente, 'FBB Community', curdate(), curtime(), 'Password Changed', 'Congratulations! Your password has been changed successfully', 0)");
+        values($id_utente, 'E-LEARNING FBB COMMUNITY', curdate(), curtime(), 'Password Changed', 'Congratulations! Your password has been changed successfully', 0)");
         header("Location: notifications.php");
     }else{
         $send_notific = $mysql->query("INSERT INTO notifica(ID_utente, mittente, data, ora, oggetto, corpo, visto)
-        values($id_utente, 'FBB Community', curdate(), curtime(), 'Password Not Changed', 'Oh no! Unfortunately, the password has not been changed because you entered the old password incorrectly', 0)");
+        values($id_utente, 'E-LEARNING FBB COMMUNITY', curdate(), curtime(), 'Password Not Changed', 'Oh no! Unfortunately, the password has not been changed because you entered the old password incorrectly', 0)");
         header("Location: notifications.php");
     }
 
