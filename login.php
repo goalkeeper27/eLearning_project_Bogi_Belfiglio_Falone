@@ -5,7 +5,12 @@ require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$main = new Template("skins/revision/dtml/login/login.html");
+
+//if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST["username"]) && isset($_POST["password"])){
+
+    
     $username = $_POST["username"];
     $password = $_POST["password"];
 
@@ -22,15 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows === 1) {
             $data = $result->fetch_assoc();
             $_SESSION['auth']['ID'] = $data['ID'];
-            $_SESSION['auth']['username'] = $data['username'];
-            $_SESSION['auth']['password'] = $data['password'];
+            $_SESSION['auth']['username'] = $username;
+            $_SESSION['auth']['password'] = $password;
             header("Location: index.php");
             exit;
         } else {
-            echo "Nome utente e/o password non validi";
+            $main->setContent("message_error_login", "Username e/o password non validi");
         }
     } else {
-        echo "<p>errore durante il login</p>";
+        echo "errore durante il login";
     }
 }
+
+$main->close();
 ?>

@@ -1,0 +1,33 @@
+<div class="container mt-5 custom-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"><[username]></h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> <[name]></p>
+                    <p><strong>Surname:</strong> <[surname]></p>
+                    <p><strong>Date of birth:</strong> <[date]></p>
+                    <p><strong>City of birth:</strong> <[city]></p>
+                    <p><strong>Email:</strong> <[email]></p>
+                    <legend><p><strong>Do you want change your password?</strong></p></legend>
+                    <div class="button_update_psw">
+                        <button type="submit" name="login" id="change" onclick="change()">Change Password</button>
+                    </div>
+                    <div id="change_psw">
+                        <form method="post" action="personal_info.php">
+                            <p><strong>Insert your old password: </strong><input type="password" name="vecchia_password" id="vecchia_password" placeholder="old password..."/></p>
+                            <p><strong>Insert your new password: </strong><input type="password" name="password" id="password" placeholder="new password..."/></p>
+                            <p><strong>Insert your new password again: </strong><input type="password" name="password_ripetuta" id="password_ripetuta" placeholder="new password..." oninput="psw_control_user()"/></p>
+                            <p id="message_error"></p>
+                            <div class="button_update_psw">
+                                <button type="submit" name="login" id="update" disabled>Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
