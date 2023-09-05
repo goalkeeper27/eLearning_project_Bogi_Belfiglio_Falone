@@ -5,8 +5,19 @@ require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
 $main = new Template("skins/revision/dtml/registration/registration.html");
-
-if (isset($nome) && isset($cognome) && isset($data_nascita) && isset($citta) && isset($codice_fiscale) && isset($username) && isset($email) && isset($password) && isset($password_ripetuta)) {
+echo $_POST['nome'];
+echo $_POST['cognome'];
+echo $_POST['citta'];
+echo $_POST['codice_fiscale'];
+echo $_POST['username'];
+echo $_POST['email'];
+echo $_POST['password'];
+echo $_POST['password_ripetuta'];
+echo $_POST['data'];
+if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['data']) && isset($_POST['citta']) 
+    && isset($_POST['codice_fiscale']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) 
+        && isset($_POST['password_ripetuta'])) {
+    echo "post ok";
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
     $data_nascita = $_POST["data"];
@@ -48,6 +59,7 @@ if (isset($nome) && isset($cognome) && isset($data_nascita) && isset($citta) && 
                     $result = $stmt2->get_result();
                     if ($result->num_rows === 1) {
                         $data = $result->fetch_assoc();
+                        $_SESSION['auth']['ID'] = $data['ID'];
                         $_SESSION['auth']['username'] = $data['username'];
                         $_SESSION['auth']['password'] = $data['password'];
                         header("Location: index.php");

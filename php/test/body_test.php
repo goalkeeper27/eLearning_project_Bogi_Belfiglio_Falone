@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                      We are pleased to inform you that your well-deserved certificate of completion is now available for download in the 
                      \"Certifications\" section of our platform. Please log in to your account and visit the \"Certifications\" area to access 
                      and download your certificate.', 0, $id_user)");
+                     
         if ($insert_notification) {
             header("location: notifications.php");
         }

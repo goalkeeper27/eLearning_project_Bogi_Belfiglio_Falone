@@ -37,7 +37,7 @@ if (isset($_SESSION["auth"]["username"])) {
     }
 
 } else {
-    header("location: login.html");
+    header("location: login.php");
 }
 
 
