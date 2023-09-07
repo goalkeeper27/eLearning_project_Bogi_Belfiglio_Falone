@@ -1,8 +1,18 @@
 <?php
 
 $id_corso = $_POST['id_course'];
+$id_user = $_SESSION['auth']['ID'];
 
 $body = new Template("skins/revision/dtml/course/body_course.html");
+
+#disable enroll button
+$verify_enroll = $mysql->query("SELECT * FROM storico_iscrizioni_corso WHERE ID_utente = $id_user AND ID_corso = $id_corso");
+if($verify_enroll->num_rows == 0){
+    $body->setContent('enroll_button','<a class="btn btn-block btn-secondary py-3 px-5" href="#" onclick="submitCourseDetail(\'enroll_course\')">Enroll Now</a>');
+}else{
+    $body->setContent('enroll_button','<a class="btn btn-block btn-secondary py-3 px-5 disabled" href="#" onclick="submitCourseDetail(\'enroll_course\')">Enroll Now</a>');
+}
+
 
 # principal details of the course
 $principal_details = $mysql->query("SELECT C.*, I.file as immagine, I.titolo as alt, IST.nome as nome_istruttore, IST.cognome as cognome_istruttore  

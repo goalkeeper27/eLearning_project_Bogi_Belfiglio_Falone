@@ -5,13 +5,19 @@ if(isset($_POST["password"]) && isset($_POST["password_ripetuta"])){
     $username = $_SESSION['auth']['username'];
     $id_utente = $_SESSION['auth']['ID'];
     $nuova_password = $_POST["password"];
-    $vecchia_password = $_SESSION['auth']['password'];
+    $select_vecchia_password = $mysql->query("SELECT password FROM utente WHERE username = '$username' AND ID = $id_utente");
+    if($select_vecchia_password){
+        $vecchia_password = $select_vecchia_password->fetch_assoc();
+    }else{
+        echo "Errore nella query: ".$mysql->error;
+    }
+    
     $password_vecchia_inserita = $_POST['vecchia_password'];
+    $password_vecchia_inserita_hash = hash('md5', $password_vecchia_inserita);
 
-    if($vecchia_password === $password_vecchia_inserita){
+    if($vecchia_password["password"] === $password_vecchia_inserita_hash){
         $nuova_password_hash = hash('md5', $nuova_password);
         $update_password = $mysql->query("UPDATE utente SET password = '$nuova_password_hash' WHERE username = '$username'");
-        $_SESSION['auth']['password'] = $nuova_password;
         $send_notific = $mysql->query("INSERT INTO notifica(ID_utente, mittente, data, ora, oggetto, corpo, visto)
         values($id_utente, 'E-LEARNING FBB COMMUNITY', curdate(), curtime(), 'Password Changed', 'Congratulations! Your password has been changed successfully', 0)");
         header("Location: notifications.php");
@@ -25,7 +31,6 @@ if(isset($_POST["password"]) && isset($_POST["password_ripetuta"])){
     
     $body = new Template("skins/revision/dtml/personal_info/body_personal_info.html");
     $username = $_SESSION['auth']['username'];
-    $vecchia_password = $_SESSION['auth']['password'];
 
     $info_utente = $mysql->query("SELECT * FROM utente WHERE username = '$username'");
 

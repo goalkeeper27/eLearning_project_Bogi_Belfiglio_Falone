@@ -28,7 +28,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
             $data = $result->fetch_assoc();
             $_SESSION['auth']['ID'] = $data['ID'];
             $_SESSION['auth']['username'] = $username;
-            $_SESSION['auth']['password'] = $password;
             header("Location: index.php");
             exit;
         } else {
