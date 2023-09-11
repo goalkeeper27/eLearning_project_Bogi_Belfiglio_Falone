@@ -39,13 +39,17 @@ if($total_lessons == $total_followed_lessons){
 }
 
 
-$lessons = $mysql->query("SELECT L.*, C.nome as course_name FROM Lezione L INNER JOIN Corso C ON C.ID = L.ID_corso WHERE C.ID = $id_course 
-ORDER BY L.numero");
+$lessons = $mysql->query("SELECT L.* FROM Lezione L INNER JOIN Corso C ON C.ID = L.ID_corso WHERE C.ID = $id_course ORDER BY L.numero");
+
+$course_name = $mysql->query("SELECT C.nome as course_name FROM Corso C WHERE C.ID = $id_course");
+if($row = $course_name->fetch_assoc()){
+    $body->setContent('course_name', strtolower($row['course_name']));
+}
+
 
 if ($lessons->num_rows > 0) {
     while ($row = $lessons->fetch_assoc()) {
         $id_lesson = $row['ID'];
-        $body->setContent('course_name', strtolower($row['course_name']));
         $body->setContent('number_lesson', $row['numero']);
         $body->setContent('title_lesson', strtoupper($row['titolo']));
         $body->setContent('init_form', '<form action="/lesson.php" method="POST" id="' . $id_lesson . '" >');
