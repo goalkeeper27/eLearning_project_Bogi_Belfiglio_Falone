@@ -10,6 +10,7 @@ if (isset($_SESSION['auth']['ID'])) {
     #disable enroll button
     $verify_enroll = $mysql->query("SELECT * FROM storico_iscrizioni_corso WHERE ID_utente = $id_user AND ID_corso = $id_corso");
     if ($verify_enroll->num_rows == 0) {
+        $body->setContent("input_id_course", '<input type="hidden" name="id_course" value="'. $id_corso .'" />');
         $body->setContent('enroll_button', '<a class="btn btn-block btn-secondary py-3 px-5" href="#" onclick="submitCourseDetail(\'enroll_course\')">Enroll Now</a>');
     } else {
         $body->setContent('enroll_button', '<a class="btn btn-block btn-secondary py-3 px-5 disabled" href="#" onclick="submitCourseDetail(\'enroll_course\')">Already enrolled</a>');
