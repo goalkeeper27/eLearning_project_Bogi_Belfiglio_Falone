@@ -5,15 +5,7 @@ require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
 $main = new Template("skins/revision/dtml/registration/registration.html");
-echo $_POST['nome'];
-echo $_POST['cognome'];
-echo $_POST['citta'];
-echo $_POST['codice_fiscale'];
-echo $_POST['username'];
-echo $_POST['email'];
-echo $_POST['password'];
-echo $_POST['password_ripetuta'];
-echo $_POST['data'];
+
 if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['data']) && isset($_POST['citta']) 
     && isset($_POST['codice_fiscale']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) 
         && isset($_POST['password_ripetuta'])) {

@@ -56,33 +56,7 @@ while ($row = $popular_categories->fetch_assoc()) {
     $body->setContent("courses", $row["numero"]);
 }
 
-$id_category_query = $mysql->query("SELECT ID_categoria FROM corso WHERE ID = $id_corso");
-$id_category_result = $id_category_query->fetch_assoc();
-$id_category = $id_category_result["ID_categoria"];
 
-$related_courses = $mysql->query("SELECT * FROM corso WHERE ID_categoria = $id_category AND ID <> $id_corso");
-while ($row = $related_courses->fetch_assoc()) {
-    $id = $row['ID'];
-    $course = $mysql->query("SELECT C.*, I.titolo as alt, I.file as immagine, IST.nome as nome_istruttore, IST.cognome as cognome_istruttore FROM 
-    Corso C INNER JOIN Immagine I ON C.ID_immagine = I.ID INNER JOIN Istruttore IST ON C.ID_istruttore = IST.ID 
-    WHERE C.ID = $id");
-
-    $result_course = $course->fetch_assoc();
-    $body->setContent("title_related_course", $result_course["nome"]);
-    $body->setContent("instructor_related_course", $result_course["nome_istruttore"] . " " . $result_course["cognome_istruttore"]);
-    $body->setContent("price_related_course", $result_course["prezzo"]);
-    $body->setContent('related_course_image', '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($result_course["immagine"]) . '" alt="' . $result_course["alt"] . '">');
-    $body->setContent(
-        'course_detail', '<form id="' . $result_course["ID"] . '" method="POST" action="course.php">
-                                            <input type="hidden" name="id_course" value="' . $result_course["ID"] . '" />
-                                            <a class="btn btn-primary" href="#" onclick="submitCourseDetail(' . $result_course["ID"] . ')">
-                                                Course Detail
-                                            </a>
-                                        </form>'
-    );
-}
-
-$body->setContent("input_id_course", '<input type="hidden" name="id_course" value="' . $id_corso . '" />');
 
 
 
